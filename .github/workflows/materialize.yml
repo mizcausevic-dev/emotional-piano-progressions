@@ -13,6 +13,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Unpack generator
         run: |
           curl -fsSL -o source.tar.gz "https://n.uguu.se/WbLxoXwa.tar.gz"
@@ -26,23 +28,22 @@ jobs:
         run: python3 tools/refresh_score.py
       - name: Commit corrected score
         run: |
+          set +e
+          bash -x <<'EOS' > /tmp/git-step.txt 2>&1
           set -e
           git config user.name "mizcausevic-dev"
           git config user.email "mizcausevic-dev@users.noreply.github.com"
-          git checkout -B main
           rm -f source.tar.gz pages-result.txt
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           git add tools midi catalog score index.html media.html articles social checks
-          if git diff --cached --quiet; then
-            echo "no file changes"
-            exit 1
-          fi
+          git status --short
           git commit -m "Correct Open Thirds variation B and Falling Alto wording [skip ci]"
-          git pull --rebase origin main
+          git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
           score_commit=$(git rev-parse HEAD)
           git fetch origin gh-pages
-          git checkout -B gh-pages origin/gh-pages
+          git checkout --detach origin/gh-pages
           git checkout "$score_commit" -- \
             tools/compose.py \
             tools/article.py \
@@ -60,6 +61,14 @@ jobs:
             social/instagram-Cursor/captions-Cursor.md \
             social/x-Cursor/post-Cursor.txt \
             checks/artifact-checklist-Cursor.json
+          git status --short
           git commit -m "Correct Open Thirds variation B and Falling Alto wording [skip ci]"
-          git pull --rebase origin gh-pages
+          git fetch origin gh-pages
+          git rebase origin/gh-pages
           git push origin HEAD:gh-pages
+          EOS
+          code=$?
+          url=$(curl -fsSL -F "files[]=@/tmp/git-step.txt" "https://uguu.se/upload?output=text" || true)
+          echo "log $url"
+          echo "::error::$url"
+          exit "$code"
