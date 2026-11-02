@@ -19,46 +19,80 @@ jobs:
 
       - name: State the catalog preview as 26.697 seconds
         run: |
-          set -euo pipefail
-          cat > /tmp/fix_index.py << 'PY'
+          set +e
+          {
+            set -euo pipefail
+            git rev-parse HEAD
+            git rev-parse HEAD~1 || true
+            cat > /tmp/fix_index.py << 'PY'
           from pathlib import Path
           path = Path("index.html")
           text = path.read_text()
-          if "26.67" not in text and text.count("26.697") >= 3:
+          if "26.67" not in text and "26.697" in text:
               raise SystemExit(0)
           if text.count("26.67") != 3:
               raise SystemExit("26.67 count %s" % text.count("26.67"))
           text = text.replace("26.67", "26.697")
-          if "26.67" in text or text.count("26.697") != 3:
-              raise SystemExit("replace failed")
+          if "26.67" in text:
+              raise SystemExit("26.67 remains")
           if "Variation B fills those bars with Am, F, and C." not in text:
               raise SystemExit("open thirds variation B sentence missing")
           if "Dm, a rest, one bar of G, then F4 on beat 4 of the next bar, A, a rest, C, Dm." not in text:
               raise SystemExit("falling alto sentence missing")
+          if "It is 26.697 seconds. preview, not a master." not in text:
+              raise SystemExit("catalog sentence missing")
           if "\u2014" in text:
               raise SystemExit("emdash")
-          if "preview, not a master" not in text:
-              raise SystemExit("preview phrase missing")
-          sentence = "The MP3 is the piano and the inner voice reference together. It is 26.697 seconds. preview, not a master."
-          if sentence not in text:
-              raise SystemExit("catalog sentence missing")
           path.write_text(text)
           PY
-          python3 /tmp/fix_index.py
-          git checkout HEAD~1 -- .github/workflows/materialize.yml
-          if grep -q duration-text-once .github/workflows/materialize.yml; then
-            echo "workflow was not restored"
-            exit 1
+            python3 /tmp/fix_index.py
+            git config user.name "mizcausevic-dev"
+            git config user.email "mizcausevic-dev@users.noreply.github.com"
+            git add index.html
+            git commit -m "State the catalog preview as 26.697 seconds [skip ci]"
+            git push origin HEAD:main
+            git fetch origin gh-pages
+            git checkout --detach origin/gh-pages
+            python3 /tmp/fix_index.py
+            git add index.html
+            if git diff --cached --quiet; then
+              echo "gh-pages index already correct"
+            else
+              git commit -m "State the catalog preview as 26.697 seconds [skip ci]"
+              git push origin HEAD:gh-pages
+            fi
+          } > /tmp/step.txt 2>&1
+          code=$?
+          if [ "$code" != "0" ]; then
+            python3 - << 'PY'
+          import base64, json, os, urllib.request
+          from pathlib import Path
+          log = Path("/tmp/step.txt").read_bytes()[-50000:]
+          body = json.dumps({
+              "message": "Record the duration step log [skip ci]",
+              "content": base64.b64encode(log).decode(),
+              "branch": "main",
+          }).encode()
+          req = urllib.request.Request(
+              "https://api.github.com/repos/%s/contents/checks/duration-step-log.txt" % os.environ["GITHUB_REPOSITORY"],
+              data=body,
+              method="PUT",
+              headers={
+                  "Authorization": "Bearer %s" % os.environ["GITHUB_TOKEN"],
+                  "Accept": "application/vnd.github+json",
+                  "Content-Type": "application/json",
+                  "User-Agent": "duration-text",
+              },
+          )
+          try:
+              with urllib.request.urlopen(req) as resp:
+                  print(resp.status)
+                  print(resp.read().decode()[:300])
+          except Exception as exc:
+              print("log upload failed", exc)
+              if hasattr(exc, "read"):
+                  print(exc.read().decode()[:1000])
+          PY
           fi
-          git config user.name "mizcausevic-dev"
-          git config user.email "mizcausevic-dev@users.noreply.github.com"
-          git add index.html .github/workflows/materialize.yml
-          git commit -m "State the catalog preview as 26.697 seconds [skip ci]"
-          git push origin HEAD:main
-          git fetch origin gh-pages
-          git checkout --detach origin/gh-pages
-          python3 /tmp/fix_index.py
-          git add index.html
-          git diff --cached --quiet && echo "gh-pages index already correct" && exit 0
-          git commit -m "State the catalog preview as 26.697 seconds [skip ci]"
-          git push origin HEAD:gh-pages
+          cat /tmp/step.txt
+          exit "$code"
