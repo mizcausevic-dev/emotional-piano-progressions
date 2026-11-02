@@ -1,0 +1,1169 @@
+{
+  "arrangement": {
+    "agreement": "PASS",
+    "bytes": 345,
+    "format": 1,
+    "path": "midi/arrangement.mid",
+    "ppq": 960,
+    "sha256": "687bec41f13402b1bb48dd4956f5dff9fed9eddb38212a848851716c6b352247",
+    "tracks": 3
+  },
+  "catalog_path": "catalog/catalog-Cursor.json",
+  "catalog_sha256": "cf2c7308e6825a0c6c0684be38515b4d015d199b41637d12cf853e2de9bcb586",
+  "errors": [],
+  "files": [
+    {
+      "bytes": 260,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 25,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 833333
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 72.00002880001152,
+      "format": 0,
+      "max_polyphony": 5,
+      "meter": "4/4",
+      "notes": 25,
+      "path": "midi/s01-open-thirds/piano-a.mid",
+      "ppq": 960,
+      "requested_bpm": 72,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "a8471e1acdf80387f927c136ee7566fc99babf4a39b7cb86b3268328c55329d2",
+      "tempo_us": 833333,
+      "tracks": 1
+    },
+    {
+      "bytes": 253,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 23,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 833333
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 72.00002880001152,
+      "format": 0,
+      "max_polyphony": 3,
+      "meter": "4/4",
+      "notes": 23,
+      "path": "midi/s01-open-thirds/piano-b.mid",
+      "ppq": 960,
+      "requested_bpm": 72,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "5ba4fa581bd65c160cd8b9505de18a35b08d3a3cf31596fc0690447cd2891777",
+      "tempo_us": 833333,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 833333
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 72.00002880001152,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s01-open-thirds/inner-a.mid",
+      "ppq": 960,
+      "requested_bpm": 72,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "7547ed54e7d4e371413c09d980135f5e1210754deb8949a3044c91bce6553142",
+      "tempo_us": 833333,
+      "tracks": 1
+    },
+    {
+      "bytes": 97,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 4,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 833333
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 72.00002880001152,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 4,
+      "path": "midi/s01-open-thirds/inner-b.mid",
+      "ppq": 960,
+      "requested_bpm": 72,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "671f7da5b8bcdca248e8bcc04e7735f41fde5ce7b43437fac67f69558510eeca",
+      "tempo_us": 833333,
+      "tracks": 1
+    },
+    {
+      "bytes": 242,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 22,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1000000
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 60.0,
+      "format": 0,
+      "max_polyphony": 5,
+      "meter": "4/4",
+      "notes": 22,
+      "path": "midi/s02-falling-alto/piano-a.mid",
+      "ppq": 960,
+      "requested_bpm": 60,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "d31aeb71f7ee3feb981d8db958e8352b7cc6d0c96817f6e5d398733fecfd6689",
+      "tempo_us": 1000000,
+      "tracks": 1
+    },
+    {
+      "bytes": 215,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 19,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1000000
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 60.0,
+      "format": 0,
+      "max_polyphony": 4,
+      "meter": "4/4",
+      "notes": 19,
+      "path": "midi/s02-falling-alto/piano-b.mid",
+      "ppq": 960,
+      "requested_bpm": 60,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "8d1f165bc841fc31c48c54734acb6c2c3f1fb6c0a272748fbe72d87b68bbf74e",
+      "tempo_us": 1000000,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1000000
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 60.0,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s02-falling-alto/inner-a.mid",
+      "ppq": 960,
+      "requested_bpm": 60,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "480e086236cb72ccbfb525268f28a274160f6f67cf3bc1771522e17065ccb6a3",
+      "tempo_us": 1000000,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1000000
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 60.0,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s02-falling-alto/inner-b.mid",
+      "ppq": 960,
+      "requested_bpm": 60,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "2caf9f543c40ef562d1571b809164441b281560fa4b840c94656b16492ffac3f",
+      "tempo_us": 1000000,
+      "tracks": 1
+    },
+    {
+      "bytes": 211,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 18,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1111111
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 54.00000540000054,
+      "format": 0,
+      "max_polyphony": 5,
+      "meter": "4/4",
+      "notes": 18,
+      "path": "midi/s03-low-fifths/piano-a.mid",
+      "ppq": 960,
+      "requested_bpm": 54,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "652bea4f697195720486c59160561c075fab8d9e44a39d9a8edb818e762a45fc",
+      "tempo_us": 1111111,
+      "tracks": 1
+    },
+    {
+      "bytes": 199,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 17,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1111111
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 54.00000540000054,
+      "format": 0,
+      "max_polyphony": 4,
+      "meter": "4/4",
+      "notes": 17,
+      "path": "midi/s03-low-fifths/piano-b.mid",
+      "ppq": 960,
+      "requested_bpm": 54,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "f32d2d066832f19bb7e53e9521b8bd028bd7377a43fb743ef753f9b4295fe19f",
+      "tempo_us": 1111111,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1111111
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 54.00000540000054,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s03-low-fifths/inner-a.mid",
+      "ppq": 960,
+      "requested_bpm": 54,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "d42fe0a9ff2b50d1c3f1d313810a4ce585a4f2edc7c2908b0ffd5b23f420f082",
+      "tempo_us": 1111111,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1111111
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 54.00000540000054,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s03-low-fifths/inner-b.mid",
+      "ppq": 960,
+      "requested_bpm": 54,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "91c6360131b8e9322c22ee082a861b987ee0be1bd9a642a5ab11a98fc0faa725",
+      "tempo_us": 1111111,
+      "tracks": 1
+    },
+    {
+      "bytes": 132,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 15360,
+        "meter": "4/4",
+        "notes": 9,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 714286
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 83.99996640001343,
+      "format": 0,
+      "max_polyphony": 2,
+      "meter": "4/4",
+      "notes": 9,
+      "path": "midi/s04-two-note-call/piano-a.mid",
+      "ppq": 960,
+      "requested_bpm": 84,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "c024b5f8e3fbfbf085b8c2e2a67f78b5532be9a3262eed7908f3d11a160c4637",
+      "tempo_us": 714286,
+      "tracks": 1
+    },
+    {
+      "bytes": 143,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 15360,
+        "meter": "4/4",
+        "notes": 10,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 714286
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 83.99996640001343,
+      "format": 0,
+      "max_polyphony": 4,
+      "meter": "4/4",
+      "notes": 10,
+      "path": "midi/s04-two-note-call/piano-b.mid",
+      "ppq": 960,
+      "requested_bpm": 84,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "900fdb0c532583e33bf30bbf7f9694817305e4a723fed0012f3c4118e3b6ad67",
+      "tempo_us": 714286,
+      "tracks": 1
+    },
+    {
+      "bytes": 77,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 15360,
+        "meter": "4/4",
+        "notes": 2,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 714286
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 83.99996640001343,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 2,
+      "path": "midi/s04-two-note-call/inner-a.mid",
+      "ppq": 960,
+      "requested_bpm": 84,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "571a41d0a91cfd04d9ac11dca3b1350e535b96c63e98821b2b2b3f89a0f3e63d",
+      "tempo_us": 714286,
+      "tracks": 1
+    },
+    {
+      "bytes": 77,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 15360,
+        "meter": "4/4",
+        "notes": 2,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 714286
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 83.99996640001343,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 2,
+      "path": "midi/s04-two-note-call/inner-b.mid",
+      "ppq": 960,
+      "requested_bpm": 84,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "384f8b60c8d3a56d48ac8adb17615b6938369893ef4b5e497b21e569c435b5b0",
+      "tempo_us": 714286,
+      "tracks": 1
+    },
+    {
+      "bytes": 279,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 27,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 909091
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 65.99999340000066,
+      "format": 0,
+      "max_polyphony": 4,
+      "meter": "4/4",
+      "notes": 27,
+      "path": "midi/s05-suspended-room/piano-a.mid",
+      "ppq": 960,
+      "requested_bpm": 66,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "a65f35fec0b0841c75576b24abc9d615dd8dcafd575be88779d0c75dc1118999",
+      "tempo_us": 909091,
+      "tracks": 1
+    },
+    {
+      "bytes": 222,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 20,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 909091
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 65.99999340000066,
+      "format": 0,
+      "max_polyphony": 4,
+      "meter": "4/4",
+      "notes": 20,
+      "path": "midi/s05-suspended-room/piano-b.mid",
+      "ppq": 960,
+      "requested_bpm": 66,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "c8f405f58bbf3defac535b73811e7ba4e6bda79e3c2c8cf2898e12966c066bdd",
+      "tempo_us": 909091,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 909091
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 65.99999340000066,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s05-suspended-room/inner-a.mid",
+      "ppq": 960,
+      "requested_bpm": 66,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "f55656849e3f8dba8a2a208bd8363d1e08fe07b270b78f12fe81b4fd53cb24f6",
+      "tempo_us": 909091,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 909091
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 65.99999340000066,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s05-suspended-room/inner-b.mid",
+      "ppq": 960,
+      "requested_bpm": 66,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "62e45c4a0e19c2fd276b22b317451290cd9ca56aee7a2ea0ef2e878f720c3e57",
+      "tempo_us": 909091,
+      "tracks": 1
+    },
+    {
+      "bytes": 236,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 22,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1200000
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 50.0,
+      "format": 0,
+      "max_polyphony": 5,
+      "meter": "4/4",
+      "notes": 22,
+      "path": "midi/s06-plagal-space/piano-a.mid",
+      "ppq": 960,
+      "requested_bpm": 50,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "8406ef0295567a9057c823f30076865d9d5b43846cb5f877dea6dbe120a1726e",
+      "tempo_us": 1200000,
+      "tracks": 1
+    },
+    {
+      "bytes": 221,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 20,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1200000
+      },
+      "core": true,
+      "departures": 1,
+      "effective_bpm": 50.0,
+      "format": 0,
+      "max_polyphony": 5,
+      "meter": "4/4",
+      "notes": 20,
+      "outside_collection": 1,
+      "path": "midi/s06-plagal-space/piano-b.mid",
+      "ppq": 960,
+      "requested_bpm": 50,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "da0aea62f6bd6492ade1629aa8b543106ac6efd0831bc02eddff09072d1ae905",
+      "tempo_us": 1200000,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1200000
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 50.0,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s06-plagal-space/inner-a.mid",
+      "ppq": 960,
+      "requested_bpm": 50,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "2ee3f07251a2338b3cf2eed3d026fbb5b8f8856c8a942e7d2d7b388c984e1632",
+      "tempo_us": 1200000,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1200000
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 50.0,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s06-plagal-space/inner-b.mid",
+      "ppq": 960,
+      "requested_bpm": 50,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "a89a25cfa0902a5455be80e46a3278aeac884ec49710b35023b7cbdb4e71d28d",
+      "tempo_us": 1200000,
+      "tracks": 1
+    },
+    {
+      "bytes": 202,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 15360,
+        "meter": "4/4",
+        "notes": 18,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 750000
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 80.0,
+      "format": 0,
+      "max_polyphony": 5,
+      "meter": "4/4",
+      "notes": 18,
+      "path": "midi/s07-late-question/piano-a.mid",
+      "ppq": 960,
+      "requested_bpm": 80,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "eac23e0719f8dbea47a227c1435fd5264761e579f41eea342646b842dece913c",
+      "tempo_us": 750000,
+      "tracks": 1
+    },
+    {
+      "bytes": 121,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 15360,
+        "meter": "4/4",
+        "notes": 8,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 750000
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 80.0,
+      "format": 0,
+      "max_polyphony": 4,
+      "meter": "4/4",
+      "notes": 8,
+      "path": "midi/s07-late-question/piano-b.mid",
+      "ppq": 960,
+      "requested_bpm": 80,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "148aa93b480a6c06278ff60c773c9025870f3f8fe3191a7101cc68b2973aeca1",
+      "tempo_us": 750000,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 15360,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 750000
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 80.0,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s07-late-question/inner-a.mid",
+      "ppq": 960,
+      "requested_bpm": 80,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "769990ddc10196869244d6270e7e1a299cd87098058f1a4ccdc336a82fa419de",
+      "tempo_us": 750000,
+      "tracks": 1
+    },
+    {
+      "bytes": 77,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 15360,
+        "meter": "4/4",
+        "notes": 2,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 750000
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 80.0,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 2,
+      "path": "midi/s07-late-question/inner-b.mid",
+      "ppq": 960,
+      "requested_bpm": 80,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "d2a7fd72d9270e3ddb751da4e5491b00c4279198f6412301303831c20e6d43c5",
+      "tempo_us": 750000,
+      "tracks": 1
+    },
+    {
+      "bytes": 211,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 19,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1034483
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 57.999986466669824,
+      "format": 0,
+      "max_polyphony": 5,
+      "meter": "4/4",
+      "notes": 19,
+      "path": "midi/s08-cadence-room/piano-a.mid",
+      "ppq": 960,
+      "requested_bpm": 58,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "14ba266d4a527579266770d5e1019a364eeb0440d4aa741e82babedaa11c70dc",
+      "tempo_us": 1034483,
+      "tracks": 1
+    },
+    {
+      "bytes": 162,
+      "channels": [
+        0
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 13,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1034483
+      },
+      "core": true,
+      "departures": 0,
+      "effective_bpm": 57.999986466669824,
+      "format": 0,
+      "max_polyphony": 4,
+      "meter": "4/4",
+      "notes": 13,
+      "path": "midi/s08-cadence-room/piano-b.mid",
+      "ppq": 960,
+      "requested_bpm": 58,
+      "role": "piano",
+      "score_agreement": "PASS",
+      "sha256": "b640714645daca4e0306f9822ef46221116321e3d309768fadaa7afc3e8e17f2",
+      "tempo_us": 1034483,
+      "tracks": 1
+    },
+    {
+      "bytes": 97,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 4,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1034483
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 57.999986466669824,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 4,
+      "path": "midi/s08-cadence-room/inner-a.mid",
+      "ppq": 960,
+      "requested_bpm": 58,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "8ae28b011e3f78373af00d5f38a1c8f919d12aadf6c94790d6c2b8a1d835181a",
+      "tempo_us": 1034483,
+      "tracks": 1
+    },
+    {
+      "bytes": 87,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 3,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 1034483
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 57.999986466669824,
+      "format": 0,
+      "max_polyphony": 1,
+      "meter": "4/4",
+      "notes": 3,
+      "path": "midi/s08-cadence-room/inner-b.mid",
+      "ppq": 960,
+      "requested_bpm": 58,
+      "role": "inner-voice",
+      "score_agreement": "PASS",
+      "sha256": "77d159dccca1af68a775fceee5a131ffc6917aa8ee56f23a79ccb424208e0774",
+      "tempo_us": 1034483,
+      "tracks": 1
+    }
+  ],
+  "generator_version": "1.0.0",
+  "identity_check": {
+    "emotion": "Emotional quality is not an automated validation result.",
+    "hands": {
+      "s01.piano.a": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 7,
+        "rest_ticks": 20160,
+        "rh_span": 9,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 20160."
+      },
+      "s01.piano.b": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 9,
+        "rest_ticks": 22320,
+        "rh_span": 8,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 9 semitones. Silent ticks 22320."
+      },
+      "s02.piano.a": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 12,
+        "rest_ticks": 20160,
+        "rh_span": 8,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 12 semitones. Silent ticks 20160."
+      },
+      "s02.piano.b": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 12,
+        "rest_ticks": 22320,
+        "rh_span": 9,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 12 semitones. Silent ticks 22320."
+      },
+      "s03.piano.a": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 7,
+        "rest_ticks": 17520,
+        "rh_span": 9,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 17520."
+      },
+      "s03.piano.b": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 10,
+        "rest_ticks": 23040,
+        "rh_span": 5,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 5 semitones. Largest leap 10 semitones. Silent ticks 23040."
+      },
+      "s04.piano.a": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 9,
+        "rest_ticks": 11520,
+        "rh_span": 7,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 7 semitones. Largest leap 9 semitones. Silent ticks 11520."
+      },
+      "s04.piano.b": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 12,
+        "rest_ticks": 10320,
+        "rh_span": 3,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 3 semitones. Largest leap 12 semitones. Silent ticks 10320."
+      },
+      "s05.piano.a": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 7,
+        "rest_ticks": 17760,
+        "rh_span": 9,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 17760."
+      },
+      "s05.piano.b": {
+        "lh_span": 0,
+        "lh_used": true,
+        "max_leap": 7,
+        "rest_ticks": 21120,
+        "rh_span": 9,
+        "rh_used": true,
+        "summary": "Left hand plays single notes. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 21120."
+      },
+      "s06.piano.a": {
+        "lh_span": 12,
+        "lh_used": true,
+        "max_leap": 8,
+        "rest_ticks": 20640,
+        "rh_span": 8,
+        "rh_used": true,
+        "summary": "Left hand stack 12 semitones. Right hand stack 8 semitones. Largest leap 8 semitones. Silent ticks 20640."
+      },
+      "s06.piano.b": {
+        "lh_span": 12,
+        "lh_used": true,
+        "max_leap": 12,
+        "rest_ticks": 24480,
+        "rh_span": 7,
+        "rh_used": true,
+        "summary": "Left hand stack 12 semitones. Right hand stack 7 semitones. Largest leap 12 semitones. Silent ticks 24480."
+      },
+      "s07.piano.a": {
+        "lh_span": 12,
+        "lh_used": true,
+        "max_leap": 10,
+        "rest_ticks": 12720,
+        "rh_span": 12,
+        "rh_used": true,
+        "summary": "Left hand stack 12 semitones. Right hand stack 12 semitones. Largest leap 10 semitones. Silent ticks 12720."
+      },
+      "s07.piano.b": {
+        "lh_span": 0,
+        "lh_used": true,
+        "max_leap": 7,
+        "rest_ticks": 10080,
+        "rh_span": 7,
+        "rh_used": true,
+        "summary": "Left hand plays single notes. Right hand stack 7 semitones. Largest leap 7 semitones. Silent ticks 10080."
+      },
+      "s08.piano.a": {
+        "lh_span": 7,
+        "lh_used": true,
+        "max_leap": 7,
+        "rest_ticks": 21600,
+        "rh_span": 12,
+        "rh_used": true,
+        "summary": "Left hand stack 7 semitones. Right hand stack 12 semitones. Largest leap 7 semitones. Silent ticks 21600."
+      },
+      "s08.piano.b": {
+        "lh_span": 8,
+        "lh_used": true,
+        "max_leap": 10,
+        "rest_ticks": 24480,
+        "rh_span": 5,
+        "rh_used": true,
+        "summary": "Left hand stack 8 semitones. Right hand stack 5 semitones. Largest leap 10 semitones. Silent ticks 24480."
+      }
+    },
+    "method": "Piano A and B differ in start, pitch, or duration, not velocity alone. Variation A attack-time tuples are unique across the eight studies. Departures are flagged only outside the pitch-class set.",
+    "variation_a_studies": [
+      "s01",
+      "s02",
+      "s03",
+      "s04",
+      "s05",
+      "s06",
+      "s07",
+      "s08"
+    ]
+  },
+  "listening": "No human listening audition was performed for this build.",
+  "negative_tests": {
+    "boundary_rejected_at_write": "PASS",
+    "monophonic_overlap_detected": "PASS"
+  },
+  "pack_id": "emotional-piano-progressions",
+  "percussion_map": "No percussion track is present. Channel 10 is unused.",
+  "repair_note": "No repairs were applied. This report is the first validation pass of the delivered bytes.",
+  "repairs": [],
+  "result": "PASS",
+  "rules": [
+    "file exists and parses",
+    "PPQ 960",
+    "encoded tempo and 4/4 meter",
+    "one end-of-track at the declared container",
+    "explicit note pairing",
+    "boundaries, velocity, piano range 36 to 84, inner-voice range 48 to 76",
+    "piano polyphony cap of six and monophonic inner voice",
+    "hand stack within 12 semitones and reviewed leaps",
+    "variation A and B differ in start, pitch, or duration",
+    "variation A attack-time tuples are unique across the eight studies",
+    "departure flags only outside the pitch-class set",
+    "inner voice is not a copy of a piano event",
+    "note-offs precede note-ons that share a tick",
+    "no program changes or other channel messages",
+    "reopened notes match the canonical score",
+    "arrangement musical tracks match the individual files and carry no tempo"
+  ],
+  "score_path": "score/canonical-score-Cursor.json",
+  "score_sha256": "8c87ff475ad989b5da2c2ed93865fae28ce232bd75179b6a682d2272e25b701f",
+  "validator_version": "1.0.0"
+}

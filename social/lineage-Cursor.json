@@ -1,0 +1,48 @@
+{
+  "commands": {
+    "card": [
+      "ffmpeg",
+      "-y",
+      "-i",
+      "/home/runner/work/emotional-piano-progressions/emotional-piano-progressions/art/hero.jpg",
+      "-vf",
+      "scale=1600:900",
+      "-q:v",
+      "3",
+      "/home/runner/work/emotional-piano-progressions/emotional-piano-progressions/social/x-Cursor/card.jpg"
+    ],
+    "portrait": [
+      "ffmpeg",
+      "-y",
+      "-i",
+      "/home/runner/work/emotional-piano-progressions/emotional-piano-progressions/art/square.jpg",
+      "-vf",
+      "crop=864:1080:108:0,scale=1080:1350",
+      "-q:v",
+      "3",
+      "/home/runner/work/emotional-piano-progressions/emotional-piano-progressions/social/instagram-Cursor/portrait.jpg"
+    ]
+  },
+  "hero": "JPEG of the 1280x720 wide framing. Held intervals sit on either side of an open rest. The film plate is a JPEG of the same PPM, made before this final hero file was written.",
+  "instagram_portrait": "864x1080 crop from x=108 of the square, then scaled to 1080x1350.",
+  "instagram_square": "Byte copy of art/square.jpg.",
+  "instagram_square_sha256": "e138ce930c1383288128dc5e939011b173debaee57023b738eb7b1c32aacd1d3",
+  "painter": "tools/render_visual.py paint()",
+  "poster_command": [
+    "ffmpeg",
+    "-y",
+    "-i",
+    "/home/runner/work/emotional-piano-progressions/emotional-piano-progressions/art/hero.jpg",
+    "-vf",
+    "drawtext=textfile=/home/runner/work/emotional-piano-progressions/emotional-piano-progressions/build/onpicture.txt:fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=h-100:box=1:boxcolor=black@0.68:boxborderw=22",
+    "-frames:v",
+    "1",
+    "-q:v",
+    "3",
+    "/home/runner/work/emotional-piano-progressions/emotional-piano-progressions/film/poster.jpg"
+  ],
+  "poster_note": "The poster adds only the line preview, not master.",
+  "square": "JPEG of the 1080x1080 square framing. A vertical keyboard and a different rest gap. Not a scale of the hero.",
+  "square_sha256": "e138ce930c1383288128dc5e939011b173debaee57023b738eb7b1c32aacd1d3",
+  "x_card": "scale the 1280x720 hero to 1600x900."
+}

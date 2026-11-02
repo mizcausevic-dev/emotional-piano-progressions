@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emotional Piano Progressions</title>
+  <style>
+    :root {
+      --bg: #142026;
+      --paper: #e7f0ea;
+      --ink: #142026;
+      --accent: #e0a15a;
+      --copper: #c56a3a;
+      --sage: #6e8f84;
+      --muted: #a9bdb4;
+      --line: rgba(231, 240, 234, .18);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--paper);
+      font-family: Georgia, "Iowan Old Style", Palatino, serif;
+      line-height: 1.45;
+    }
+    a { color: var(--accent); }
+    p, h1, h2, h3, li, td, .beat { overflow-wrap: anywhere; }
+    button, .meta, .beat, .transport { font-family: ui-monospace, Menlo, Consolas, monospace; }
+    header, main { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+    header { padding: 22px 0 8px; }
+    .nav { display: flex; flex-wrap: wrap; gap: 12px; font-size: .82rem; }
+    h1 { font-weight: 500; font-size: clamp(2.1rem, 5vw, 4rem); line-height: .95; margin: 8px 0 12px; }
+    h2 { font-weight: 500; font-size: 1.5rem; margin: 0 0 8px; }
+    h3 { font-size: 1rem; margin: 0 0 8px; font-weight: 500; }
+    .kicker { letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-size: .75rem; }
+    .stage img, .player video, .player audio { display: block; width: 100%; height: auto; background: #000; }
+    .stage { margin: 12px 0 16px; }
+    .rail, .switch { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+    button {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--paper);
+      border-radius: 999px;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+    button[aria-pressed="true"] { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+    .board, .inner-board, .map {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 12px 0 18px;
+    }
+    .bar {
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 14px;
+      padding: 10px;
+      min-width: 0;
+    }
+    .bar.now { outline: 3px solid var(--accent); }
+    .beats { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .beat { min-height: 3.4rem; border-radius: 8px; padding: 6px; font-size: .78rem; }
+    .beat.on { background: #f4efe4; border: 1px solid var(--copper); }
+    .beat.rest { background: transparent; border: 1px dashed var(--sage); color: #245246; }
+    .inner-board .bar { background: transparent; color: var(--paper); border: 1px solid var(--line); }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: .85rem; }
+    .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+    .meta { color: var(--muted); font-size: .85rem; }
+    .chain, .flow { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+    .chain li, .flow span { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-size: .82rem; }
+    .table-scroll { overflow-x: auto; max-width: 100%; }
+    table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    section.block { margin: 28px 0; padding-top: 18px; border-top: 1px solid var(--line); }
+    .transport { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0 18px; }
+    @media (max-width: 800px) {
+      .board, .inner-board, .map { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 420px) {
+      .board, .inner-board, .map { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="kicker">Emotional Piano Progressions</p>
+    <nav class="nav">
+      <a href="#board">Voicings</a>
+      <a href="#files">Files</a>
+      <a href="#reading">Preview</a>
+      <a href="media.html">Stills</a>
+      <a href="midi/arrangement.mid">Arrangement</a>
+    </nav>
+  </header>
+  <main>
+    <p class="kicker">Eight studies, two piano variations, rests written in</p>
+    <h1 id="title">Open Thirds</h1>
+    <p id="identity"></p>
+    <p class="meta" id="facts"></p>
+    <p id="rhythm"></p>
+    <p id="voicing"></p>
+    <p id="hands"></p>
+    <p id="limits"></p>
+    <p id="departures"></p>
+    <figure class="stage">
+      <img src="art/hero.jpg" width="1280" height="720" alt="Illustration of an economical piano voicing: a few held intervals and the rests between them. Not a photograph of a studio or of performers.">
+      <figcaption>Illustration of economical piano voicing and rests. Not a photograph of a session or of performers.</figcaption>
+    </figure>
+    <div class="rail" id="rail"></div>
+    <div class="switch">
+      <button type="button" id="var-a" aria-pressed="true">Variation A</button>
+      <button type="button" id="var-b" aria-pressed="false">Variation B</button>
+    </div>
+    <div class="board" id="board"></div>
+    <p class="legend">
+      <span><i class="swatch" style="background:#f4efe4;border:1px solid #c56a3a"></i>sounding voicing</span>
+      <span><i class="swatch" style="border:1px dashed #6e8f84"></i>rest</span>
+    </p>
+    <p class="meta" id="status">Reading the MIDI.</p>
+    <div class="transport">
+      <button type="button" id="play">Play piano</button>
+      <button type="button" id="inner-toggle" aria-pressed="false">Inner voice in playback</button>
+      <span id="transport-label">Space plays and stops. J and K change the study.</span>
+    </div>
+    <h2>Inner voice reference</h2>
+    <p>This row is not part of the core count and it is not in the piano file. Empty bars stay marked rest.</p>
+    <div class="inner-board" id="inner-board"></div>
+    <section class="block" id="plan">
+      <h2>Lengths chosen first</h2>
+      <p>Container lengths and integer tempos were chosen before the notes. Study 01 is 8 bars at 72 BPM so the full container is the preview. seconds = bars * 4 * 60 / BPM. 8 bars at 72 BPM is 26.7 seconds.</p>
+      <p>Piano uses MIDI 36 to 84, at most six notes at once, and at most three in one hand. A simultaneous stack in one hand stays within 12 semitones. Notes below 60 are the left hand. Notes from 60 up are the right hand. The inner voice is monophonic, MIDI 48 to 76, reference-only, and is not part of the core count.</p>
+      <p>No pedal is encoded. Each chord is held only for its written duration and then released. The writing stays coherent without an undocumented sustain pedal.</p>
+      <p>Emotional quality is a compositional aim. It is not an automated validation result.</p>
+    </section>
+    <section class="block" id="chain">
+      <h2>File contract</h2>
+      <ol class="chain">
+        <li>Canonical score</li>
+        <li>MIDI bytes</li>
+        <li>Reopened validation</li>
+        <li>MP3 preview</li>
+        <li>Film and captions</li>
+        <li>Stills</li>
+        <li>Social drafts</li>
+        <li>This catalog page</li>
+      </ol>
+    </section>
+    <section class="block" id="map">
+      <h2>Set map</h2>
+      <p class="meta">Piano files are the core. Inner voice files are reference only. A and B are alternatives.</p>
+      <div class="map"><section><h3>s01 Open Thirds</h3><ul><li><a href="midi/s01-open-thirds/piano-a.mid">s01.piano.a</a> core</li><li><a href="midi/s01-open-thirds/piano-b.mid">s01.piano.b</a> core</li><li><a href="midi/s01-open-thirds/inner-a.mid">s01.inner.a</a> reference, not in the core count</li><li><a href="midi/s01-open-thirds/inner-b.mid">s01.inner.b</a> reference, not in the core count</li></ul></section><section><h3>s02 Falling Alto</h3><ul><li><a href="midi/s02-falling-alto/piano-a.mid">s02.piano.a</a> core</li><li><a href="midi/s02-falling-alto/piano-b.mid">s02.piano.b</a> core</li><li><a href="midi/s02-falling-alto/inner-a.mid">s02.inner.a</a> reference, not in the core count</li><li><a href="midi/s02-falling-alto/inner-b.mid">s02.inner.b</a> reference, not in the core count</li></ul></section><section><h3>s03 Low Fifths</h3><ul><li><a href="midi/s03-low-fifths/piano-a.mid">s03.piano.a</a> core</li><li><a href="midi/s03-low-fifths/piano-b.mid">s03.piano.b</a> core</li><li><a href="midi/s03-low-fifths/inner-a.mid">s03.inner.a</a> reference, not in the core count</li><li><a href="midi/s03-low-fifths/inner-b.mid">s03.inner.b</a> reference, not in the core count</li></ul></section><section><h3>s04 Two-Note Call</h3><ul><li><a href="midi/s04-two-note-call/piano-a.mid">s04.piano.a</a> core</li><li><a href="midi/s04-two-note-call/piano-b.mid">s04.piano.b</a> core</li><li><a href="midi/s04-two-note-call/inner-a.mid">s04.inner.a</a> reference, not in the core count</li><li><a href="midi/s04-two-note-call/inner-b.mid">s04.inner.b</a> reference, not in the core count</li></ul></section><section><h3>s05 Suspended Room</h3><ul><li><a href="midi/s05-suspended-room/piano-a.mid">s05.piano.a</a> core</li><li><a href="midi/s05-suspended-room/piano-b.mid">s05.piano.b</a> core</li><li><a href="midi/s05-suspended-room/inner-a.mid">s05.inner.a</a> reference, not in the core count</li><li><a href="midi/s05-suspended-room/inner-b.mid">s05.inner.b</a> reference, not in the core count</li></ul></section><section><h3>s06 Plagal Space</h3><ul><li><a href="midi/s06-plagal-space/piano-a.mid">s06.piano.a</a> core</li><li><a href="midi/s06-plagal-space/piano-b.mid">s06.piano.b</a> core</li><li><a href="midi/s06-plagal-space/inner-a.mid">s06.inner.a</a> reference, not in the core count</li><li><a href="midi/s06-plagal-space/inner-b.mid">s06.inner.b</a> reference, not in the core count</li></ul></section><section><h3>s07 Late Question</h3><ul><li><a href="midi/s07-late-question/piano-a.mid">s07.piano.a</a> core</li><li><a href="midi/s07-late-question/piano-b.mid">s07.piano.b</a> core</li><li><a href="midi/s07-late-question/inner-a.mid">s07.inner.a</a> reference, not in the core count</li><li><a href="midi/s07-late-question/inner-b.mid">s07.inner.b</a> reference, not in the core count</li></ul></section><section><h3>s08 Cadence Room</h3><ul><li><a href="midi/s08-cadence-room/piano-a.mid">s08.piano.a</a> core</li><li><a href="midi/s08-cadence-room/piano-b.mid">s08.piano.b</a> core</li><li><a href="midi/s08-cadence-room/inner-a.mid">s08.inner.a</a> reference, not in the core count</li><li><a href="midi/s08-cadence-room/inner-b.mid">s08.inner.b</a> reference, not in the core count</li></ul></section></div>
+    </section>
+    <section class="block" id="files">
+      <h2>Files</h2>
+      <p class="meta">Validation PASS. Core 16. Inner voice references 16. <a href="midi/validation-Cursor.json">validation report</a> · <a href="catalog/catalog-Cursor.json">catalog</a> · <a href="score/canonical-score-Cursor.json">canonical score</a></p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Part</th><th>Role</th><th>Var</th><th>Count</th><th>BPM</th><th>Notes</th></tr></thead>
+          <tbody><tr><td><a href="midi/s01-open-thirds/piano-a.mid">s01.piano.a</a></td><td>piano</td><td>a</td><td>core</td><td>72</td><td>25</td></tr><tr><td><a href="midi/s01-open-thirds/piano-b.mid">s01.piano.b</a></td><td>piano</td><td>b</td><td>core</td><td>72</td><td>23</td></tr><tr><td><a href="midi/s01-open-thirds/inner-a.mid">s01.inner.a</a></td><td>inner-voice</td><td>a</td><td>inner voice reference</td><td>72</td><td>3</td></tr><tr><td><a href="midi/s01-open-thirds/inner-b.mid">s01.inner.b</a></td><td>inner-voice</td><td>b</td><td>inner voice reference</td><td>72</td><td>4</td></tr><tr><td><a href="midi/s02-falling-alto/piano-a.mid">s02.piano.a</a></td><td>piano</td><td>a</td><td>core</td><td>60</td><td>22</td></tr><tr><td><a href="midi/s02-falling-alto/piano-b.mid">s02.piano.b</a></td><td>piano</td><td>b</td><td>core</td><td>60</td><td>19</td></tr><tr><td><a href="midi/s02-falling-alto/inner-a.mid">s02.inner.a</a></td><td>inner-voice</td><td>a</td><td>inner voice reference</td><td>60</td><td>3</td></tr><tr><td><a href="midi/s02-falling-alto/inner-b.mid">s02.inner.b</a></td><td>inner-voice</td><td>b</td><td>inner voice reference</td><td>60</td><td>3</td></tr><tr><td><a href="midi/s03-low-fifths/piano-a.mid">s03.piano.a</a></td><td>piano</td><td>a</td><td>core</td><td>54</td><td>18</td></tr><tr><td><a href="midi/s03-low-fifths/piano-b.mid">s03.piano.b</a></td><td>piano</td><td>b</td><td>core</td><td>54</td><td>17</td></tr><tr><td><a href="midi/s03-low-fifths/inner-a.mid">s03.inner.a</a></td><td>inner-voice</td><td>a</td><td>inner voice reference</td><td>54</td><td>3</td></tr><tr><td><a href="midi/s03-low-fifths/inner-b.mid">s03.inner.b</a></td><td>inner-voice</td><td>b</td><td>inner voice reference</td><td>54</td><td>3</td></tr><tr><td><a href="midi/s04-two-note-call/piano-a.mid">s04.piano.a</a></td><td>piano</td><td>a</td><td>core</td><td>84</td><td>9</td></tr><tr><td><a href="midi/s04-two-note-call/piano-b.mid">s04.piano.b</a></td><td>piano</td><td>b</td><td>core</td><td>84</td><td>10</td></tr><tr><td><a href="midi/s04-two-note-call/inner-a.mid">s04.inner.a</a></td><td>inner-voice</td><td>a</td><td>inner voice reference</td><td>84</td><td>2</td></tr><tr><td><a href="midi/s04-two-note-call/inner-b.mid">s04.inner.b</a></td><td>inner-voice</td><td>b</td><td>inner voice reference</td><td>84</td><td>2</td></tr><tr><td><a href="midi/s05-suspended-room/piano-a.mid">s05.piano.a</a></td><td>piano</td><td>a</td><td>core</td><td>66</td><td>27</td></tr><tr><td><a href="midi/s05-suspended-room/piano-b.mid">s05.piano.b</a></td><td>piano</td><td>b</td><td>core</td><td>66</td><td>20</td></tr><tr><td><a href="midi/s05-suspended-room/inner-a.mid">s05.inner.a</a></td><td>inner-voice</td><td>a</td><td>inner voice reference</td><td>66</td><td>3</td></tr><tr><td><a href="midi/s05-suspended-room/inner-b.mid">s05.inner.b</a></td><td>inner-voice</td><td>b</td><td>inner voice reference</td><td>66</td><td>3</td></tr><tr><td><a href="midi/s06-plagal-space/piano-a.mid">s06.piano.a</a></td><td>piano</td><td>a</td><td>core</td><td>50</td><td>22</td></tr><tr><td><a href="midi/s06-plagal-space/piano-b.mid">s06.piano.b</a></td><td>piano</td><td>b</td><td>core</td><td>50</td><td>20</td></tr><tr><td><a href="midi/s06-plagal-space/inner-a.mid">s06.inner.a</a></td><td>inner-voice</td><td>a</td><td>inner voice reference</td><td>50</td><td>3</td></tr><tr><td><a href="midi/s06-plagal-space/inner-b.mid">s06.inner.b</a></td><td>inner-voice</td><td>b</td><td>inner voice reference</td><td>50</td><td>3</td></tr><tr><td><a href="midi/s07-late-question/piano-a.mid">s07.piano.a</a></td><td>piano</td><td>a</td><td>core</td><td>80</td><td>18</td></tr><tr><td><a href="midi/s07-late-question/piano-b.mid">s07.piano.b</a></td><td>piano</td><td>b</td><td>core</td><td>80</td><td>8</td></tr><tr><td><a href="midi/s07-late-question/inner-a.mid">s07.inner.a</a></td><td>inner-voice</td><td>a</td><td>inner voice reference</td><td>80</td><td>3</td></tr><tr><td><a href="midi/s07-late-question/inner-b.mid">s07.inner.b</a></td><td>inner-voice</td><td>b</td><td>inner voice reference</td><td>80</td><td>2</td></tr><tr><td><a href="midi/s08-cadence-room/piano-a.mid">s08.piano.a</a></td><td>piano</td><td>a</td><td>core</td><td>58</td><td>19</td></tr><tr><td><a href="midi/s08-cadence-room/piano-b.mid">s08.piano.b</a></td><td>piano</td><td>b</td><td>core</td><td>58</td><td>13</td></tr><tr><td><a href="midi/s08-cadence-room/inner-a.mid">s08.inner.a</a></td><td>inner-voice</td><td>a</td><td>inner voice reference</td><td>58</td><td>4</td></tr><tr><td><a href="midi/s08-cadence-room/inner-b.mid">s08.inner.b</a></td><td>inner-voice</td><td>b</td><td>inner voice reference</td><td>58</td><td>3</td></tr></tbody>
+        </table>
+      </div>
+      <p>Use either the combined arrangement or the separate parts. Do not stack the part files on top of the combined file.</p>
+    </section>
+    <section class="block player" id="reading">
+      <h2>Recorded preview</h2>
+      <p class="kicker">Study 01, variation A, all 8 bars</p>
+      <p>The MP3 is the piano and the inner voice reference together. It is 26.67 seconds. preview, not a master. The film is 26.67 seconds and shows preview, not master.</p>
+      <audio controls preload="metadata" src="preview/preview.mp3"></audio>
+      <p><a href="preview/preview.mp3">preview/preview.mp3</a> · <a href="preview/preview-manifest-Cursor.txt">preview manifest</a></p>
+      <video controls preload="metadata" poster="film/poster.jpg" width="1280" height="720">
+        <source src="film/preview.mp4" type="video/mp4">
+        <track kind="captions" src="film/preview.vtt" srclang="en" label="English" default>
+      </video>
+      <p><a href="film/preview.mp4">film/preview.mp4</a> · <a href="film/preview.vtt">film/preview.vtt</a> · <a href="film/poster.jpg">poster</a></p>
+    </section>
+    <section class="block">
+      <h2>Article draft</h2>
+      <p><a href="articles/medium-draft-Cursor.md">Article draft</a> · <a href="articles/medium-paste-Cursor.txt">plain text</a></p>
+      <p>No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary.</p>
+      <p>No human listening audition was performed for this build.</p>
+      <h2>What the validator checks</h2>
+      <ul><li>file exists and parses</li><li>PPQ 960</li><li>encoded tempo and 4/4 meter</li><li>one end-of-track at the declared container</li><li>explicit note pairing</li><li>boundaries, velocity, piano range 36 to 84, inner-voice range 48 to 76</li><li>piano polyphony cap of six and monophonic inner voice</li><li>hand stack within 12 semitones and reviewed leaps</li><li>variation A and B differ in start, pitch, or duration</li><li>variation A attack-time tuples are unique across the eight studies</li><li>departure flags only outside the pitch-class set</li><li>inner voice is not a copy of a piano event</li><li>note-offs precede note-ons that share a tick</li><li>no program changes or other channel messages</li><li>reopened notes match the canonical score</li><li>arrangement musical tracks match the individual files and carry no tempo</li></ul>
+      <p>The GitHub repository is https://github.com/mizcausevic-dev/emotional-piano-progressions and it is public. The catalog page is https://mizcausevic-dev.github.io/emotional-piano-progressions/ .</p>
+    </section>
+  </main>
+  <script id="pack" type="application/json">{"hand_split": 60, "studies": [{"id": "s01", "title": "Open Thirds", "bpm": 72, "bars": 8, "seconds": 26.67, "collection": "A natural minor", "tonic": "A", "identity": "Variation A holds Am, F, C, Dm, and Am, with a full empty bar after each of the first three chords. Variation B starts on beat 4, fills bars that A leaves empty, and shortens the last chord.", "limitations": "Use piano A with inner A, or piano B with inner B. The inner voice is optional. The piano chords are complete without it. No pedal is encoded.", "voicing": "Left hand is a fifth or a single bass note under C4. Right hand is a third or a triad from C4 up. Stacks stay within an octave.", "layering": "Both hands share the piano file. The inner voice is a separate reference file and is not copied into the piano.", "accent": "Cadence velocity is 90. Earlier chords sit between 68 and 82. The variation is not a velocity edit.", "departures": [], "harmonic_rhythm": "Two bars each of Am and F and C, then one bar of Dm and one bar of Am. The even bars between the first three chords are empty.", "changes": ["Am", "F", "C", "Dm", "Am"], "change_bars": [2, 2, 2, 1, 1], "phrases": [{"name": "Open", "start_bar": 0, "bars": 2}, {"name": "Shift", "start_bar": 2, "bars": 2}, {"name": "Lift", "start_bar": 4, "bars": 2}, {"name": "Return", "start_bar": 6, "bars": 2}], "tempo_us": 833333, "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 20160. Variation B: Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 9 semitones. Silent ticks 22320."}, {"id": "s02", "title": "Falling Alto", "bpm": 60, "bars": 8, "seconds": 32.0, "collection": "D Dorian", "tonic": "D", "identity": "Variation A drops D5, C5, A4, then rests a bar before the chords. Variation B drops that line and places block chords on different beats.", "limitations": "The falling line is the motif. It is not a scale run. Inner voice A sits in the empty bars and is not required.", "voicing": "The line is one right-hand note at a time. Later chords are a left-hand fifth plus two or three right-hand notes.", "layering": "Left-hand notes stay below C4. The inner voice is not merged into those notes.", "accent": "The falling line is quieter than the final Dm.", "departures": [], "harmonic_rhythm": "Dm, a rest, G for two bars, A, a rest, C, Dm.", "changes": ["Dm", "rest", "G", "A", "rest", "C", "Dm"], "change_bars": [1, 1, 2, 1, 1, 1, 1], "phrases": [{"name": "Fall", "start_bar": 0, "bars": 2}, {"name": "G", "start_bar": 2, "bars": 2}, {"name": "A", "start_bar": 4, "bars": 2}, {"name": "Close", "start_bar": 6, "bars": 2}], "tempo_us": 1000000, "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 12 semitones. Silent ticks 20160. Variation B: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 12 semitones. Silent ticks 22320."}, {"id": "s03", "title": "Low Fifths", "bpm": 54, "bars": 8, "seconds": 35.56, "collection": "F major", "tonic": "F", "identity": "Variation A is a left-hand fifth on beat 1 and one right-hand answer later in the bar. Empty bars separate the fifths. Variation B leads with the right hand and reorders the chords.", "limitations": "The answer note is not a pedal blur of the fifth. The fifth has already been released, or it is still held only for its written length.", "voicing": "Fifths are F-C, Bb-F, C-G, and G-D. The last bar adds a right-hand F triad.", "layering": "Until the last bar the hands rarely sound together. That is the written spacing, not a missing track.", "accent": "The final F is the loudest chord.", "departures": [], "harmonic_rhythm": "One bar each: F, rest, Bb, rest, C, rest, G, F.", "changes": ["F", "rest", "Bb", "rest", "C", "rest", "G", "F"], "change_bars": [1, 1, 1, 1, 1, 1, 1, 1], "phrases": [{"name": "F", "start_bar": 0, "bars": 2}, {"name": "Bb", "start_bar": 2, "bars": 2}, {"name": "C", "start_bar": 4, "bars": 2}, {"name": "Cadence", "start_bar": 6, "bars": 2}], "tempo_us": 1111111, "spell": ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"], "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 17520. Variation B: Left hand stack 7 semitones. Right hand stack 5 semitones. Largest leap 10 semitones. Silent ticks 23040."}, {"id": "s04", "title": "Two-Note Call", "bpm": 84, "bars": 4, "seconds": 11.43, "collection": "E natural minor", "tonic": "E", "identity": "Variation A speaks in two-note pairs and leaves bar 3 empty. Variation B is a three-note descent into a low fifth, then B and F#.", "limitations": "F#4 in variation B is inside E natural minor and is not flagged. The empty bar is the breathing room.", "voicing": "Variation A never stacks more than two notes. Variation B opens into a fifth plus a third.", "layering": "The inner voice enters only in the gaps. It is not the call.", "accent": "The last hold is louder than the opening pair.", "departures": [], "harmonic_rhythm": "Em, Em, a full bar of rest, Em.", "changes": ["Em", "Em", "rest", "Em"], "change_bars": [1, 1, 1, 1], "phrases": [{"name": "Call", "start_bar": 0, "bars": 1}, {"name": "Answer", "start_bar": 1, "bars": 1}, {"name": "Rest", "start_bar": 2, "bars": 1}, {"name": "Hold", "start_bar": 3, "bars": 1}], "tempo_us": 714286, "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 7 semitones. Largest leap 9 semitones. Silent ticks 11520. Variation B: Left hand stack 7 semitones. Right hand stack 3 semitones. Largest leap 12 semitones. Silent ticks 10320."}, {"id": "s05", "title": "Suspended Room", "bpm": 66, "bars": 8, "seconds": 29.09, "collection": "C major", "tonic": "C", "identity": "Variation A states a suspension and resolves it in the same bar, then rests the next bar. Variation B delays the first suspension until beat 4 and leaves the last bar empty.", "limitations": "The resolution is a new written chord. It does not depend on a pedal to hold the first chord through the second.", "voicing": "Suspensions are D over C, G over F, and D over G. Each resolves by a step of one or two semitones.", "layering": "Inner voice A uses the rest bars. It does not double the suspension.", "accent": "The resolved chord is louder than the suspension that precedes it.", "departures": [], "harmonic_rhythm": "C, rest, F, rest, G, rest, then C for two bars.", "changes": ["C", "rest", "F", "rest", "G", "rest", "C"], "change_bars": [1, 1, 1, 1, 1, 1, 2], "phrases": [{"name": "C", "start_bar": 0, "bars": 2}, {"name": "F", "start_bar": 2, "bars": 2}, {"name": "G", "start_bar": 4, "bars": 2}, {"name": "Cadence", "start_bar": 6, "bars": 2}], "tempo_us": 909091, "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 17760. Variation B: Left hand plays single notes. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 21120."}, {"id": "s06", "title": "Plagal Space", "bpm": 50, "bars": 8, "seconds": 38.4, "collection": "G natural minor", "tonic": "G", "identity": "Variation A leaves a bar empty between the long chords. Variation B enters off the downbeat. Its last chord adds F#4, and that note alone is flagged.", "limitations": "Do not treat the flagged F# as part of G natural minor. The other notes in that chord remain in the set.", "voicing": "Open fifths with a right-hand third or seventh. No hand stack is wider than an octave.", "layering": "The inner voice moves F, Eb, D or Bb, G, F. It is not in the piano file.", "accent": "The last chord is the peak. The offbeat variation is slightly softer.", "departures": ["Variation B, last bar, F#4 (66) is outside G natural minor. G and D in that chord stay in the set and are not flagged."], "harmonic_rhythm": "Gm, rest, Cm, rest, Gm, Eb, rest, Gm. Variation B ends on a G chord with F#.", "changes": ["Gm", "rest", "Cm", "rest", "Gm", "Eb", "rest", "Gm"], "change_bars": [1, 1, 1, 1, 1, 1, 1, 1], "phrases": [{"name": "Gm", "start_bar": 0, "bars": 2}, {"name": "Cm", "start_bar": 2, "bars": 2}, {"name": "Eb", "start_bar": 4, "bars": 2}, {"name": "Return", "start_bar": 6, "bars": 2}], "tempo_us": 1200000, "spell": ["C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"], "hand_review": "Variation A: Left hand stack 12 semitones. Right hand stack 8 semitones. Largest leap 8 semitones. Silent ticks 20640. Variation B: Left hand stack 12 semitones. Right hand stack 7 semitones. Largest leap 12 semitones. Silent ticks 24480."}, {"id": "s07", "title": "Late Question", "bpm": 80, "bars": 4, "seconds": 12.0, "collection": "Bb major", "tonic": "Bb", "identity": "Variation A gives each chord a short attack and leaves the rest of the bar silent. The last chord arrives on beat 4 and does not resolve. Variation B rests the second bar and ends on a single A.", "limitations": "The question is the unresolved F, or the single A in variation B. Neither file adds a Bb cadence.", "voicing": "Bb, Gm, and Eb are five, five, and four notes. The question is four notes, or one note in variation B.", "layering": "Inner voice answers in the gaps. It is not a resolution.", "accent": "The late F is louder than the opening Bb even though it is shorter.", "departures": [], "harmonic_rhythm": "Bb, Gm, Eb, and a short F on beat 4.", "changes": ["Bb", "Gm", "Eb", "F"], "change_bars": [1, 1, 1, 1], "phrases": [{"name": "Bb", "start_bar": 0, "bars": 1}, {"name": "Gm", "start_bar": 1, "bars": 1}, {"name": "Eb", "start_bar": 2, "bars": 1}, {"name": "Question", "start_bar": 3, "bars": 1}], "tempo_us": 750000, "spell": ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"], "hand_review": "Variation A: Left hand stack 12 semitones. Right hand stack 12 semitones. Largest leap 10 semitones. Silent ticks 12720. Variation B: Left hand plays single notes. Right hand stack 7 semitones. Largest leap 7 semitones. Silent ticks 10080."}, {"id": "s08", "title": "Cadence Room", "bpm": 58, "bars": 8, "seconds": 33.1, "collection": "A major", "tonic": "A", "identity": "Variation A is silent for three bars, then moves D, E, A. Variation B states A, E, and D at the start and leaves the next four bars empty except one quiet A at the end.", "limitations": "The opening silence is the phrase. It is not a missing file. C# and G# are inside A major and are not flagged.", "voicing": "D, E, and A are written as fifth plus third, within an octave in each hand.", "layering": "Inner voice A sings through the opening rest. It is still a separate reference.", "accent": "The A after the dominant is louder than the D that begins the cadence.", "departures": [], "harmonic_rhythm": "Three bars of rest, D, a bar of rest, E, A, A. Variation B states A, E, D first.", "changes": ["rest", "D", "rest", "E", "A", "A"], "change_bars": [3, 1, 1, 1, 1, 1], "phrases": [{"name": "Wait", "start_bar": 0, "bars": 3}, {"name": "D", "start_bar": 3, "bars": 1}, {"name": "E", "start_bar": 4, "bars": 2}, {"name": "A", "start_bar": 6, "bars": 2}], "tempo_us": 1034483, "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 12 semitones. Largest leap 7 semitones. Silent ticks 21600. Variation B: Left hand stack 8 semitones. Right hand stack 5 semitones. Largest leap 10 semitones. Silent ticks 24480."}], "parts": [{"id": "s01.piano.a", "study_id": "s01", "role": "piano", "variation": "a", "path": "midi/s01-open-thirds/piano-a.mid", "core": true}, {"id": "s01.piano.b", "study_id": "s01", "role": "piano", "variation": "b", "path": "midi/s01-open-thirds/piano-b.mid", "core": true}, {"id": "s01.inner.a", "study_id": "s01", "role": "inner-voice", "variation": "a", "path": "midi/s01-open-thirds/inner-a.mid", "core": false}, {"id": "s01.inner.b", "study_id": "s01", "role": "inner-voice", "variation": "b", "path": "midi/s01-open-thirds/inner-b.mid", "core": false}, {"id": "s02.piano.a", "study_id": "s02", "role": "piano", "variation": "a", "path": "midi/s02-falling-alto/piano-a.mid", "core": true}, {"id": "s02.piano.b", "study_id": "s02", "role": "piano", "variation": "b", "path": "midi/s02-falling-alto/piano-b.mid", "core": true}, {"id": "s02.inner.a", "study_id": "s02", "role": "inner-voice", "variation": "a", "path": "midi/s02-falling-alto/inner-a.mid", "core": false}, {"id": "s02.inner.b", "study_id": "s02", "role": "inner-voice", "variation": "b", "path": "midi/s02-falling-alto/inner-b.mid", "core": false}, {"id": "s03.piano.a", "study_id": "s03", "role": "piano", "variation": "a", "path": "midi/s03-low-fifths/piano-a.mid", "core": true}, {"id": "s03.piano.b", "study_id": "s03", "role": "piano", "variation": "b", "path": "midi/s03-low-fifths/piano-b.mid", "core": true}, {"id": "s03.inner.a", "study_id": "s03", "role": "inner-voice", "variation": "a", "path": "midi/s03-low-fifths/inner-a.mid", "core": false}, {"id": "s03.inner.b", "study_id": "s03", "role": "inner-voice", "variation": "b", "path": "midi/s03-low-fifths/inner-b.mid", "core": false}, {"id": "s04.piano.a", "study_id": "s04", "role": "piano", "variation": "a", "path": "midi/s04-two-note-call/piano-a.mid", "core": true}, {"id": "s04.piano.b", "study_id": "s04", "role": "piano", "variation": "b", "path": "midi/s04-two-note-call/piano-b.mid", "core": true}, {"id": "s04.inner.a", "study_id": "s04", "role": "inner-voice", "variation": "a", "path": "midi/s04-two-note-call/inner-a.mid", "core": false}, {"id": "s04.inner.b", "study_id": "s04", "role": "inner-voice", "variation": "b", "path": "midi/s04-two-note-call/inner-b.mid", "core": false}, {"id": "s05.piano.a", "study_id": "s05", "role": "piano", "variation": "a", "path": "midi/s05-suspended-room/piano-a.mid", "core": true}, {"id": "s05.piano.b", "study_id": "s05", "role": "piano", "variation": "b", "path": "midi/s05-suspended-room/piano-b.mid", "core": true}, {"id": "s05.inner.a", "study_id": "s05", "role": "inner-voice", "variation": "a", "path": "midi/s05-suspended-room/inner-a.mid", "core": false}, {"id": "s05.inner.b", "study_id": "s05", "role": "inner-voice", "variation": "b", "path": "midi/s05-suspended-room/inner-b.mid", "core": false}, {"id": "s06.piano.a", "study_id": "s06", "role": "piano", "variation": "a", "path": "midi/s06-plagal-space/piano-a.mid", "core": true}, {"id": "s06.piano.b", "study_id": "s06", "role": "piano", "variation": "b", "path": "midi/s06-plagal-space/piano-b.mid", "core": true}, {"id": "s06.inner.a", "study_id": "s06", "role": "inner-voice", "variation": "a", "path": "midi/s06-plagal-space/inner-a.mid", "core": false}, {"id": "s06.inner.b", "study_id": "s06", "role": "inner-voice", "variation": "b", "path": "midi/s06-plagal-space/inner-b.mid", "core": false}, {"id": "s07.piano.a", "study_id": "s07", "role": "piano", "variation": "a", "path": "midi/s07-late-question/piano-a.mid", "core": true}, {"id": "s07.piano.b", "study_id": "s07", "role": "piano", "variation": "b", "path": "midi/s07-late-question/piano-b.mid", "core": true}, {"id": "s07.inner.a", "study_id": "s07", "role": "inner-voice", "variation": "a", "path": "midi/s07-late-question/inner-a.mid", "core": false}, {"id": "s07.inner.b", "study_id": "s07", "role": "inner-voice", "variation": "b", "path": "midi/s07-late-question/inner-b.mid", "core": false}, {"id": "s08.piano.a", "study_id": "s08", "role": "piano", "variation": "a", "path": "midi/s08-cadence-room/piano-a.mid", "core": true}, {"id": "s08.piano.b", "study_id": "s08", "role": "piano", "variation": "b", "path": "midi/s08-cadence-room/piano-b.mid", "core": true}, {"id": "s08.inner.a", "study_id": "s08", "role": "inner-voice", "variation": "a", "path": "midi/s08-cadence-room/inner-a.mid", "core": false}, {"id": "s08.inner.b", "study_id": "s08", "role": "inner-voice", "variation": "b", "path": "midi/s08-cadence-room/inner-b.mid", "core": false}]}</script>
+  <script>
+    const pack = JSON.parse(document.getElementById("pack").textContent);
+    const rail = document.getElementById("rail");
+    const board = document.getElementById("board");
+    const innerBoard = document.getElementById("inner-board");
+    const status = document.getElementById("status");
+    let studyId = "s01";
+    let variation = "a";
+    let pianoNotes = [];
+    let innerNotes = [];
+    let audio = null;
+    let playing = false;
+    let followId = 0;
+    let useInner = false;
+
+    function study() {
+      return pack.studies.find((item) => item.id === studyId);
+    }
+    function pitchName(pitch) {
+      return study().spell[pitch % 12] + (Math.floor(pitch / 12) - 1);
+    }
+    function readVlq(view, offset) {
+      let value = 0;
+      let byte = 0;
+      do {
+        byte = view.getUint8(offset);
+        offset += 1;
+        value = (value << 7) | (byte & 0x7f);
+      } while (byte & 0x80);
+      return [value, offset];
+    }
+    function parseMidi(buffer) {
+      const view = new DataView(buffer);
+      const head = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3));
+      if (head !== "MThd" || view.getUint16(12) !== 960) throw new Error("unexpected MIDI header");
+      const tracks = view.getUint16(10);
+      let offset = 14;
+      const notes = [];
+      for (let track = 0; track < tracks; track += 1) {
+        const mark = String.fromCharCode(view.getUint8(offset), view.getUint8(offset + 1), view.getUint8(offset + 2), view.getUint8(offset + 3));
+        if (mark !== "MTrk") throw new Error("missing track");
+        const length = view.getUint32(offset + 4);
+        offset += 8;
+        const end = offset + length;
+        let tick = 0;
+        let running = 0;
+        const open = new Map();
+        while (offset < end) {
+          let delta;
+          [delta, offset] = readVlq(view, offset);
+          tick += delta;
+          let byte = view.getUint8(offset);
+          if (byte >= 0x80) {
+            running = byte;
+            offset += 1;
+          }
+          if (running === 0xff) {
+            offset += 1;
+            let metaLen;
+            [metaLen, offset] = readVlq(view, offset);
+            offset += metaLen;
+            continue;
+          }
+          const kind = running & 0xf0;
+          const data1 = byte < 0x80 ? byte : view.getUint8(offset);
+          if (byte >= 0x80) offset += 1;
+          let data2 = 0;
+          if (kind !== 0xc0 && kind !== 0xd0) {
+            data2 = view.getUint8(offset);
+            offset += 1;
+          }
+          const key = (running & 0x0f) + ":" + data1;
+          if (kind === 0x90 && data2 > 0) open.set(key, { tick: tick, velocity: data2 });
+          else if (kind === 0x80 || (kind === 0x90 && data2 === 0)) {
+            const started = open.get(key);
+            if (started) {
+              notes.push({ pitch: data1, start: started.tick, duration: tick - started.tick, velocity: started.velocity });
+              open.delete(key);
+            }
+          }
+        }
+      }
+      notes.sort((a, b) => a.start - b.start || a.pitch - b.pitch);
+      return notes;
+    }
+    function partPath(role) {
+      const found = pack.parts.find((part) => part.study_id === studyId && part.role === role && part.variation === variation);
+      if (!found) throw new Error("missing " + role);
+      return found.path;
+    }
+    function changeAt(item, barIndex) {
+      let bar = 0;
+      for (let index = 0; index < item.changes.length; index += 1) {
+        const span = item.change_bars[index];
+        if (barIndex < bar + span) return item.changes[index];
+        bar += span;
+      }
+      return "";
+    }
+    function notesInBeat(notes, barIndex, beat) {
+      const start = (barIndex * 4 + beat) * 960;
+      const end = start + 960;
+      return notes.filter((note) => note.start < end && note.start + note.duration > start);
+    }
+    function namesFor(notes) {
+      const ordered = notes.slice().sort((a, b) => a.pitch - b.pitch || a.start - b.start);
+      const seen = new Set();
+      const names = [];
+      ordered.forEach((note) => {
+        const name = pitchName(note.pitch);
+        if (!seen.has(name)) {
+          seen.add(name);
+          names.push(name);
+        }
+      });
+      return names;
+    }
+    function renderCopy() {
+      const item = study();
+      document.getElementById("title").textContent = item.title;
+      document.getElementById("identity").textContent = item.identity;
+      document.getElementById("facts").textContent = item.id + " · " + item.bpm + " BPM · " + item.bars + " bars · " + item.seconds + " s at the encoded tempo · " + item.collection + " · tonic " + item.tonic;
+      document.getElementById("rhythm").textContent = item.harmonic_rhythm;
+      document.getElementById("voicing").textContent = item.voicing + " " + item.layering;
+      document.getElementById("hands").textContent = item.hand_review;
+      document.getElementById("limits").textContent = item.limitations + " " + item.accent;
+      document.getElementById("departures").textContent = item.departures.length ? item.departures.join(" ") : "No pitch in this study is flagged as a departure.";
+      document.getElementById("transport-label").textContent = item.title + " " + variation.toUpperCase() + ". Space plays and stops. J and K change the study.";
+      for (const button of rail.querySelectorAll("button")) {
+        button.setAttribute("aria-pressed", button.dataset.id === studyId ? "true" : "false");
+      }
+      document.getElementById("var-a").setAttribute("aria-pressed", variation === "a" ? "true" : "false");
+      document.getElementById("var-b").setAttribute("aria-pressed", variation === "b" ? "true" : "false");
+    }
+    function renderBoard() {
+      const item = study();
+      board.innerHTML = "";
+      innerBoard.innerHTML = "";
+      let silent = 0;
+      const total = item.bars * 4;
+      for (let bar = 0; bar < item.bars; bar += 1) {
+        const card = document.createElement("article");
+        card.className = "bar";
+        card.dataset.bar = String(bar);
+        const heading = document.createElement("h3");
+        heading.textContent = "Bar " + (bar + 1) + " · " + changeAt(item, bar);
+        const beats = document.createElement("ol");
+        beats.className = "beats";
+        for (let beat = 0; beat < 4; beat += 1) {
+          const cell = document.createElement("li");
+          const sounding = notesInBeat(pianoNotes, bar, beat);
+          if (!sounding.length) {
+            cell.className = "beat rest";
+            cell.textContent = "rest";
+            silent += 1;
+          } else {
+            cell.className = "beat on";
+            cell.textContent = namesFor(sounding).join(" ");
+          }
+          beats.appendChild(cell);
+        }
+        card.appendChild(heading);
+        card.appendChild(beats);
+        board.appendChild(card);
+        const innerCard = document.createElement("article");
+        innerCard.className = "bar";
+        const start = bar * 4 * 960;
+        const end = start + 4 * 960;
+        const inner = innerNotes.filter((note) => note.start < end && note.start + note.duration > start);
+        const label = document.createElement("h3");
+        label.textContent = "Bar " + (bar + 1);
+        const line = document.createElement("p");
+        line.textContent = inner.length ? namesFor(inner).join(" ") : "rest";
+        innerCard.appendChild(label);
+        innerCard.appendChild(line);
+        innerBoard.appendChild(innerCard);
+      }
+      status.textContent = pianoNotes.length + " piano notes from the MIDI file. " + silent + " of " + total + " beats are rests.";
+    }
+    function stopPlayback() {
+      playing = false;
+      cancelAnimationFrame(followId);
+      if (audio) audio.close();
+      audio = null;
+      document.getElementById("play").textContent = "Play piano";
+      document.querySelectorAll("#board .bar.now").forEach((node) => node.classList.remove("now"));
+    }
+    function freq(pitch) {
+      return 440 * Math.pow(2, (pitch - 69) / 12);
+    }
+    function schedule(ctx, note, origin, amount) {
+      const item = study();
+      const seconds = (tick) => tick / 960 * item.tempo_us / 1000000;
+      const when = origin + seconds(note.start);
+      const duration = Math.max(0.05, seconds(note.duration));
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = freq(note.pitch);
+      const level = amount * (note.velocity / 110);
+      gain.gain.setValueAtTime(0.0001, when);
+      gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, level), when + Math.min(0.03, duration * 0.25));
+      gain.gain.exponentialRampToValueAtTime(0.0001, when + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(when);
+      osc.stop(when + duration + 0.02);
+    }
+    function playPiano() {
+      if (!pianoNotes.length) return;
+      stopPlayback();
+      const ctx = new AudioContext();
+      audio = ctx;
+      playing = true;
+      document.getElementById("play").textContent = "Stop";
+      const origin = ctx.currentTime + 0.05;
+      pianoNotes.forEach((note) => schedule(ctx, note, origin, note.pitch >= pack.hand_split ? 0.06 : 0.04));
+      if (useInner) innerNotes.forEach((note) => schedule(ctx, note, origin, 0.03));
+      const item = study();
+      const container = item.bars * 4 * item.tempo_us / 1000000;
+      const follow = () => {
+        if (!playing || !audio) return;
+        const elapsed = audio.currentTime - origin;
+        const tick = elapsed / (item.tempo_us / 1000000) * 960;
+        const bar = Math.floor(tick / (4 * 960));
+        document.querySelectorAll("#board .bar").forEach((node) => {
+          node.classList.toggle("now", Number(node.dataset.bar) === bar);
+        });
+        if (elapsed < container) followId = requestAnimationFrame(follow);
+        else stopPlayback();
+      };
+      follow();
+    }
+    async function loadStudy() {
+      stopPlayback();
+      renderCopy();
+      status.textContent = "Reading the MIDI.";
+      board.innerHTML = "";
+      innerBoard.innerHTML = "";
+      try {
+        const pianoRes = await fetch(partPath("piano"));
+        const innerRes = await fetch(partPath("inner-voice"));
+        if (!pianoRes.ok || !innerRes.ok) throw new Error("MIDI request failed");
+        pianoNotes = parseMidi(await pianoRes.arrayBuffer());
+        innerNotes = parseMidi(await innerRes.arrayBuffer());
+        renderBoard();
+      } catch (error) {
+        pianoNotes = [];
+        innerNotes = [];
+        status.textContent = "The MIDI did not load. " + error.message;
+      }
+    }
+    function stepStudy(direction) {
+      const index = pack.studies.findIndex((item) => item.id === studyId);
+      studyId = pack.studies[(index + direction + pack.studies.length) % pack.studies.length].id;
+      loadStudy();
+    }
+    pack.studies.forEach((item) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.id = item.id;
+      button.textContent = item.id.slice(1) + " " + item.title;
+      button.addEventListener("click", () => { studyId = item.id; loadStudy(); });
+      rail.appendChild(button);
+    });
+    document.getElementById("var-a").addEventListener("click", () => { variation = "a"; loadStudy(); });
+    document.getElementById("var-b").addEventListener("click", () => { variation = "b"; loadStudy(); });
+    document.getElementById("play").addEventListener("click", () => { if (playing) stopPlayback(); else playPiano(); });
+    document.getElementById("inner-toggle").addEventListener("click", () => {
+      useInner = !useInner;
+      document.getElementById("inner-toggle").setAttribute("aria-pressed", useInner ? "true" : "false");
+    });
+    window.addEventListener("keydown", (event) => {
+      const target = event.target;
+      if (target && target.closest && target.closest("input, textarea, video, audio, a, button")) return;
+      if (event.repeat) return;
+      if (event.code === "Space") {
+        event.preventDefault();
+        if (playing) stopPlayback();
+        else playPiano();
+      } else if (event.key === "j" || event.key === "J") stepStudy(-1);
+      else if (event.key === "k" || event.key === "K") stepStudy(1);
+    });
+    loadStudy();
+  </script>
+</body>
+</html>

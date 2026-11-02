@@ -1,0 +1,1344 @@
+{
+  "arrangement": {
+    "bpm": 72,
+    "container_bars": 8,
+    "container_ticks": 30720,
+    "description": "Study 01 variation A, the full 8-bar container. Piano and inner voice are separate tracks. The inner voice is not inside the piano file.",
+    "format": 1,
+    "id": "arrangement-preview-s01a",
+    "meter": "4/4",
+    "path": "midi/arrangement.mid",
+    "tempo_us": 833333,
+    "tracks": [
+      {
+        "channel": null,
+        "name": "Conductor",
+        "source_part": null
+      },
+      {
+        "channel": 0,
+        "name": "Piano",
+        "source_part": "s01.piano.a"
+      },
+      {
+        "channel": 1,
+        "name": "Inner Voice",
+        "source_part": "s01.inner.a"
+      }
+    ]
+  },
+  "c4": 60,
+  "catalog_version": "1.0.0",
+  "core_part_count": 16,
+  "emotion_statement": "Emotional quality is a compositional aim. It is not an automated validation result.",
+  "generator_version": "1.0.0",
+  "hand_split": 60,
+  "length_plan": "Container lengths and integer tempos were chosen before the notes. Study 01 is 8 bars at 72 BPM so the full container is the preview. seconds = bars * 4 * 60 / BPM. 8 bars at 72 BPM is 26.7 seconds.",
+  "meter": {
+    "bar_ticks": 3840,
+    "denominator": 4,
+    "numerator": 4
+  },
+  "microtiming": "offset is 0; performed_start = nominal_start",
+  "note_policy": "Note-only MIDI. No pedal, no controller, and no program change is encoded.",
+  "pack_id": "emotional-piano-progressions",
+  "pack_name": "Emotional Piano Progressions",
+  "parts": [
+    {
+      "bpm": 72,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s01.piano.a",
+      "monophonic": false,
+      "notes": 25,
+      "path": "midi/s01-open-thirds/piano-a.mid",
+      "role": "piano",
+      "study_id": "s01",
+      "variation": "a"
+    },
+    {
+      "bpm": 72,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s01.piano.b",
+      "monophonic": false,
+      "notes": 23,
+      "path": "midi/s01-open-thirds/piano-b.mid",
+      "role": "piano",
+      "study_id": "s01",
+      "variation": "b"
+    },
+    {
+      "bpm": 72,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s01.inner.a",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s01-open-thirds/inner-a.mid",
+      "role": "inner-voice",
+      "study_id": "s01",
+      "variation": "a"
+    },
+    {
+      "bpm": 72,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s01.inner.b",
+      "monophonic": true,
+      "notes": 4,
+      "path": "midi/s01-open-thirds/inner-b.mid",
+      "role": "inner-voice",
+      "study_id": "s01",
+      "variation": "b"
+    },
+    {
+      "bpm": 60,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s02.piano.a",
+      "monophonic": false,
+      "notes": 22,
+      "path": "midi/s02-falling-alto/piano-a.mid",
+      "role": "piano",
+      "study_id": "s02",
+      "variation": "a"
+    },
+    {
+      "bpm": 60,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s02.piano.b",
+      "monophonic": false,
+      "notes": 19,
+      "path": "midi/s02-falling-alto/piano-b.mid",
+      "role": "piano",
+      "study_id": "s02",
+      "variation": "b"
+    },
+    {
+      "bpm": 60,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s02.inner.a",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s02-falling-alto/inner-a.mid",
+      "role": "inner-voice",
+      "study_id": "s02",
+      "variation": "a"
+    },
+    {
+      "bpm": 60,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s02.inner.b",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s02-falling-alto/inner-b.mid",
+      "role": "inner-voice",
+      "study_id": "s02",
+      "variation": "b"
+    },
+    {
+      "bpm": 54,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s03.piano.a",
+      "monophonic": false,
+      "notes": 18,
+      "path": "midi/s03-low-fifths/piano-a.mid",
+      "role": "piano",
+      "study_id": "s03",
+      "variation": "a"
+    },
+    {
+      "bpm": 54,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s03.piano.b",
+      "monophonic": false,
+      "notes": 17,
+      "path": "midi/s03-low-fifths/piano-b.mid",
+      "role": "piano",
+      "study_id": "s03",
+      "variation": "b"
+    },
+    {
+      "bpm": 54,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s03.inner.a",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s03-low-fifths/inner-a.mid",
+      "role": "inner-voice",
+      "study_id": "s03",
+      "variation": "a"
+    },
+    {
+      "bpm": 54,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s03.inner.b",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s03-low-fifths/inner-b.mid",
+      "role": "inner-voice",
+      "study_id": "s03",
+      "variation": "b"
+    },
+    {
+      "bpm": 84,
+      "channel": 0,
+      "container_bars": 4,
+      "core": true,
+      "id": "s04.piano.a",
+      "monophonic": false,
+      "notes": 9,
+      "path": "midi/s04-two-note-call/piano-a.mid",
+      "role": "piano",
+      "study_id": "s04",
+      "variation": "a"
+    },
+    {
+      "bpm": 84,
+      "channel": 0,
+      "container_bars": 4,
+      "core": true,
+      "id": "s04.piano.b",
+      "monophonic": false,
+      "notes": 10,
+      "path": "midi/s04-two-note-call/piano-b.mid",
+      "role": "piano",
+      "study_id": "s04",
+      "variation": "b"
+    },
+    {
+      "bpm": 84,
+      "channel": 1,
+      "container_bars": 4,
+      "core": false,
+      "id": "s04.inner.a",
+      "monophonic": true,
+      "notes": 2,
+      "path": "midi/s04-two-note-call/inner-a.mid",
+      "role": "inner-voice",
+      "study_id": "s04",
+      "variation": "a"
+    },
+    {
+      "bpm": 84,
+      "channel": 1,
+      "container_bars": 4,
+      "core": false,
+      "id": "s04.inner.b",
+      "monophonic": true,
+      "notes": 2,
+      "path": "midi/s04-two-note-call/inner-b.mid",
+      "role": "inner-voice",
+      "study_id": "s04",
+      "variation": "b"
+    },
+    {
+      "bpm": 66,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s05.piano.a",
+      "monophonic": false,
+      "notes": 27,
+      "path": "midi/s05-suspended-room/piano-a.mid",
+      "role": "piano",
+      "study_id": "s05",
+      "variation": "a"
+    },
+    {
+      "bpm": 66,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s05.piano.b",
+      "monophonic": false,
+      "notes": 20,
+      "path": "midi/s05-suspended-room/piano-b.mid",
+      "role": "piano",
+      "study_id": "s05",
+      "variation": "b"
+    },
+    {
+      "bpm": 66,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s05.inner.a",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s05-suspended-room/inner-a.mid",
+      "role": "inner-voice",
+      "study_id": "s05",
+      "variation": "a"
+    },
+    {
+      "bpm": 66,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s05.inner.b",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s05-suspended-room/inner-b.mid",
+      "role": "inner-voice",
+      "study_id": "s05",
+      "variation": "b"
+    },
+    {
+      "bpm": 50,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s06.piano.a",
+      "monophonic": false,
+      "notes": 22,
+      "path": "midi/s06-plagal-space/piano-a.mid",
+      "role": "piano",
+      "study_id": "s06",
+      "variation": "a"
+    },
+    {
+      "bpm": 50,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s06.piano.b",
+      "monophonic": false,
+      "notes": 20,
+      "path": "midi/s06-plagal-space/piano-b.mid",
+      "role": "piano",
+      "study_id": "s06",
+      "variation": "b"
+    },
+    {
+      "bpm": 50,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s06.inner.a",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s06-plagal-space/inner-a.mid",
+      "role": "inner-voice",
+      "study_id": "s06",
+      "variation": "a"
+    },
+    {
+      "bpm": 50,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s06.inner.b",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s06-plagal-space/inner-b.mid",
+      "role": "inner-voice",
+      "study_id": "s06",
+      "variation": "b"
+    },
+    {
+      "bpm": 80,
+      "channel": 0,
+      "container_bars": 4,
+      "core": true,
+      "id": "s07.piano.a",
+      "monophonic": false,
+      "notes": 18,
+      "path": "midi/s07-late-question/piano-a.mid",
+      "role": "piano",
+      "study_id": "s07",
+      "variation": "a"
+    },
+    {
+      "bpm": 80,
+      "channel": 0,
+      "container_bars": 4,
+      "core": true,
+      "id": "s07.piano.b",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/s07-late-question/piano-b.mid",
+      "role": "piano",
+      "study_id": "s07",
+      "variation": "b"
+    },
+    {
+      "bpm": 80,
+      "channel": 1,
+      "container_bars": 4,
+      "core": false,
+      "id": "s07.inner.a",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s07-late-question/inner-a.mid",
+      "role": "inner-voice",
+      "study_id": "s07",
+      "variation": "a"
+    },
+    {
+      "bpm": 80,
+      "channel": 1,
+      "container_bars": 4,
+      "core": false,
+      "id": "s07.inner.b",
+      "monophonic": true,
+      "notes": 2,
+      "path": "midi/s07-late-question/inner-b.mid",
+      "role": "inner-voice",
+      "study_id": "s07",
+      "variation": "b"
+    },
+    {
+      "bpm": 58,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s08.piano.a",
+      "monophonic": false,
+      "notes": 19,
+      "path": "midi/s08-cadence-room/piano-a.mid",
+      "role": "piano",
+      "study_id": "s08",
+      "variation": "a"
+    },
+    {
+      "bpm": 58,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s08.piano.b",
+      "monophonic": false,
+      "notes": 13,
+      "path": "midi/s08-cadence-room/piano-b.mid",
+      "role": "piano",
+      "study_id": "s08",
+      "variation": "b"
+    },
+    {
+      "bpm": 58,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s08.inner.a",
+      "monophonic": true,
+      "notes": 4,
+      "path": "midi/s08-cadence-room/inner-a.mid",
+      "role": "inner-voice",
+      "study_id": "s08",
+      "variation": "a"
+    },
+    {
+      "bpm": 58,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s08.inner.b",
+      "monophonic": true,
+      "notes": 3,
+      "path": "midi/s08-cadence-room/inner-b.mid",
+      "role": "inner-voice",
+      "study_id": "s08",
+      "variation": "b"
+    }
+  ],
+  "pedal_statement": "No pedal is encoded. Each chord is held only for its written duration and then released. The writing stays coherent without an undocumented sustain pedal.",
+  "pitched_range": [
+    36,
+    84
+  ],
+  "ppq": 960,
+  "preview_part_ids": [
+    "s01.piano.a",
+    "s01.inner.a"
+  ],
+  "preview_seconds_encoded": 26.666656,
+  "preview_seconds_nominal": 26.666666666666668,
+  "range_statement": "Piano uses MIDI 36 to 84, at most six notes at once, and at most three in one hand. A simultaneous stack in one hand stays within 12 semitones. Notes below 60 are the left hand. Notes from 60 up are the right hand. The inner voice is monophonic, MIDI 48 to 76, reference-only, and is not part of the core count.",
+  "reference_part_count": 16,
+  "seed_meaning": "Seeds identify studies. Nothing is random.",
+  "span_limit_semitones": 12,
+  "stack_warning": "Use either the combined arrangement or the separate parts. Do not stack the part files on top of the combined file.",
+  "stochastic_draws": 0,
+  "studies": [
+    {
+      "accent": "Cadence velocity is 90. Earlier chords sit between 68 and 82. The variation is not a velocity edit.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 72,
+      "change_bars": [
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "changes": [
+        "Am",
+        "F",
+        "C",
+        "Dm",
+        "Am"
+      ],
+      "collection_name": "A natural minor",
+      "departures": [],
+      "effective_bpm": 72.00002880001152,
+      "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 20160. Variation B: Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 9 semitones. Silent ticks 22320.",
+      "hand_span": {
+        "a": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 7,
+          "rest_ticks": 20160,
+          "rh_span": 9,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 20160."
+        },
+        "b": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 9,
+          "rest_ticks": 22320,
+          "rh_span": 8,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 9 semitones. Silent ticks 22320."
+        }
+      },
+      "hand_split": 60,
+      "harmonic_rhythm": "Two bars each of Am and F and C, then one bar of Dm and one bar of Am. The even bars between the first three chords are empty.",
+      "id": "s01",
+      "identity": "Variation A holds Am, F, C, Dm, and Am, with a full empty bar after each of the first three chords. Variation B starts on beat 4, fills bars that A leaves empty, and shortens the last chord.",
+      "layering": "Both hands share the piano file. The inner voice is a separate reference file and is not copied into the piano.",
+      "limitations": "Use piano A with inner A, or piano B with inner B. The inner voice is optional. The piano chords are complete without it. No pedal is encoded.",
+      "meter": "4/4",
+      "phrases": [
+        {
+          "bars": 2,
+          "name": "Open",
+          "start_bar": 0
+        },
+        {
+          "bars": 2,
+          "name": "Shift",
+          "start_bar": 2
+        },
+        {
+          "bars": 2,
+          "name": "Lift",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "Return",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        9,
+        11,
+        0,
+        2,
+        4,
+        5,
+        7
+      ],
+      "planned_seconds": 26.666656,
+      "seed": 7201,
+      "slug": "s01-open-thirds",
+      "spell": [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 833333,
+      "title": "Open Thirds",
+      "tonal_reference": "A",
+      "tonic": "A",
+      "voicing": "Left hand is a fifth or a single bass note under C4. Right hand is a third or a triad from C4 up. Stacks stay within an octave."
+    },
+    {
+      "accent": "The falling line is quieter than the final Dm.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 60,
+      "change_bars": [
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "changes": [
+        "Dm",
+        "rest",
+        "G",
+        "A",
+        "rest",
+        "C",
+        "Dm"
+      ],
+      "collection_name": "D Dorian",
+      "departures": [],
+      "effective_bpm": 60.0,
+      "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 12 semitones. Silent ticks 20160. Variation B: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 12 semitones. Silent ticks 22320.",
+      "hand_span": {
+        "a": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 12,
+          "rest_ticks": 20160,
+          "rh_span": 8,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 12 semitones. Silent ticks 20160."
+        },
+        "b": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 12,
+          "rest_ticks": 22320,
+          "rh_span": 9,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 12 semitones. Silent ticks 22320."
+        }
+      },
+      "hand_split": 60,
+      "harmonic_rhythm": "Dm, a rest, G for two bars, A, a rest, C, Dm.",
+      "id": "s02",
+      "identity": "Variation A drops D5, C5, A4, then rests a bar before the chords. Variation B drops that line and places block chords on different beats.",
+      "layering": "Left-hand notes stay below C4. The inner voice is not merged into those notes.",
+      "limitations": "The falling line is the motif. It is not a scale run. Inner voice A sits in the empty bars and is not required.",
+      "meter": "4/4",
+      "phrases": [
+        {
+          "bars": 2,
+          "name": "Fall",
+          "start_bar": 0
+        },
+        {
+          "bars": 2,
+          "name": "G",
+          "start_bar": 2
+        },
+        {
+          "bars": 2,
+          "name": "A",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "Close",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        11,
+        0
+      ],
+      "planned_seconds": 32.0,
+      "seed": 6002,
+      "slug": "s02-falling-alto",
+      "spell": [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 1000000,
+      "title": "Falling Alto",
+      "tonal_reference": "D",
+      "tonic": "D",
+      "voicing": "The line is one right-hand note at a time. Later chords are a left-hand fifth plus two or three right-hand notes."
+    },
+    {
+      "accent": "The final F is the loudest chord.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 54,
+      "change_bars": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "changes": [
+        "F",
+        "rest",
+        "Bb",
+        "rest",
+        "C",
+        "rest",
+        "G",
+        "F"
+      ],
+      "collection_name": "F major",
+      "departures": [],
+      "effective_bpm": 54.00000540000054,
+      "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 17520. Variation B: Left hand stack 7 semitones. Right hand stack 5 semitones. Largest leap 10 semitones. Silent ticks 23040.",
+      "hand_span": {
+        "a": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 7,
+          "rest_ticks": 17520,
+          "rh_span": 9,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 17520."
+        },
+        "b": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 10,
+          "rest_ticks": 23040,
+          "rh_span": 5,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 5 semitones. Largest leap 10 semitones. Silent ticks 23040."
+        }
+      },
+      "hand_split": 60,
+      "harmonic_rhythm": "One bar each: F, rest, Bb, rest, C, rest, G, F.",
+      "id": "s03",
+      "identity": "Variation A is a left-hand fifth on beat 1 and one right-hand answer later in the bar. Empty bars separate the fifths. Variation B leads with the right hand and reorders the chords.",
+      "layering": "Until the last bar the hands rarely sound together. That is the written spacing, not a missing track.",
+      "limitations": "The answer note is not a pedal blur of the fifth. The fifth has already been released, or it is still held only for its written length.",
+      "meter": "4/4",
+      "phrases": [
+        {
+          "bars": 2,
+          "name": "F",
+          "start_bar": 0
+        },
+        {
+          "bars": 2,
+          "name": "Bb",
+          "start_bar": 2
+        },
+        {
+          "bars": 2,
+          "name": "C",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "Cadence",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        5,
+        7,
+        9,
+        10,
+        0,
+        2,
+        4
+      ],
+      "planned_seconds": 35.555552,
+      "seed": 5403,
+      "slug": "s03-low-fifths",
+      "spell": [
+        "C",
+        "Db",
+        "D",
+        "Eb",
+        "E",
+        "F",
+        "Gb",
+        "G",
+        "Ab",
+        "A",
+        "Bb",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 1111111,
+      "title": "Low Fifths",
+      "tonal_reference": "F",
+      "tonic": "F",
+      "voicing": "Fifths are F-C, Bb-F, C-G, and G-D. The last bar adds a right-hand F triad."
+    },
+    {
+      "accent": "The last hold is louder than the opening pair.",
+      "bar_ticks": 3840,
+      "bars": 4,
+      "bpm": 84,
+      "change_bars": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "changes": [
+        "Em",
+        "Em",
+        "rest",
+        "Em"
+      ],
+      "collection_name": "E natural minor",
+      "departures": [],
+      "effective_bpm": 83.99996640001343,
+      "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 7 semitones. Largest leap 9 semitones. Silent ticks 11520. Variation B: Left hand stack 7 semitones. Right hand stack 3 semitones. Largest leap 12 semitones. Silent ticks 10320.",
+      "hand_span": {
+        "a": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 9,
+          "rest_ticks": 11520,
+          "rh_span": 7,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 7 semitones. Largest leap 9 semitones. Silent ticks 11520."
+        },
+        "b": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 12,
+          "rest_ticks": 10320,
+          "rh_span": 3,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 3 semitones. Largest leap 12 semitones. Silent ticks 10320."
+        }
+      },
+      "hand_split": 60,
+      "harmonic_rhythm": "Em, Em, a full bar of rest, Em.",
+      "id": "s04",
+      "identity": "Variation A speaks in two-note pairs and leaves bar 3 empty. Variation B is a three-note descent into a low fifth, then B and F#.",
+      "layering": "The inner voice enters only in the gaps. It is not the call.",
+      "limitations": "F#4 in variation B is inside E natural minor and is not flagged. The empty bar is the breathing room.",
+      "meter": "4/4",
+      "phrases": [
+        {
+          "bars": 1,
+          "name": "Call",
+          "start_bar": 0
+        },
+        {
+          "bars": 1,
+          "name": "Answer",
+          "start_bar": 1
+        },
+        {
+          "bars": 1,
+          "name": "Rest",
+          "start_bar": 2
+        },
+        {
+          "bars": 1,
+          "name": "Hold",
+          "start_bar": 3
+        }
+      ],
+      "pitch_classes": [
+        4,
+        6,
+        7,
+        9,
+        11,
+        0,
+        2
+      ],
+      "planned_seconds": 11.428576,
+      "seed": 8404,
+      "slug": "s04-two-note-call",
+      "spell": [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 714286,
+      "title": "Two-Note Call",
+      "tonal_reference": "E",
+      "tonic": "E",
+      "voicing": "Variation A never stacks more than two notes. Variation B opens into a fifth plus a third."
+    },
+    {
+      "accent": "The resolved chord is louder than the suspension that precedes it.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 66,
+      "change_bars": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "changes": [
+        "C",
+        "rest",
+        "F",
+        "rest",
+        "G",
+        "rest",
+        "C"
+      ],
+      "collection_name": "C major",
+      "departures": [],
+      "effective_bpm": 65.99999340000066,
+      "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 17760. Variation B: Left hand plays single notes. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 21120.",
+      "hand_span": {
+        "a": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 7,
+          "rest_ticks": 17760,
+          "rh_span": 9,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 17760."
+        },
+        "b": {
+          "lh_span": 0,
+          "lh_used": true,
+          "max_leap": 7,
+          "rest_ticks": 21120,
+          "rh_span": 9,
+          "rh_used": true,
+          "summary": "Left hand plays single notes. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 21120."
+        }
+      },
+      "hand_split": 60,
+      "harmonic_rhythm": "C, rest, F, rest, G, rest, then C for two bars.",
+      "id": "s05",
+      "identity": "Variation A states a suspension and resolves it in the same bar, then rests the next bar. Variation B delays the first suspension until beat 4 and leaves the last bar empty.",
+      "layering": "Inner voice A uses the rest bars. It does not double the suspension.",
+      "limitations": "The resolution is a new written chord. It does not depend on a pedal to hold the first chord through the second.",
+      "meter": "4/4",
+      "phrases": [
+        {
+          "bars": 2,
+          "name": "C",
+          "start_bar": 0
+        },
+        {
+          "bars": 2,
+          "name": "F",
+          "start_bar": 2
+        },
+        {
+          "bars": 2,
+          "name": "G",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "Cadence",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "planned_seconds": 29.090912,
+      "seed": 6605,
+      "slug": "s05-suspended-room",
+      "spell": [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 909091,
+      "title": "Suspended Room",
+      "tonal_reference": "C",
+      "tonic": "C",
+      "voicing": "Suspensions are D over C, G over F, and D over G. Each resolves by a step of one or two semitones."
+    },
+    {
+      "accent": "The last chord is the peak. The offbeat variation is slightly softer.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 50,
+      "change_bars": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "changes": [
+        "Gm",
+        "rest",
+        "Cm",
+        "rest",
+        "Gm",
+        "Eb",
+        "rest",
+        "Gm"
+      ],
+      "collection_name": "G natural minor",
+      "departures": [
+        "Variation B, last bar, F#4 (66) is outside G natural minor. G and D in that chord stay in the set and are not flagged."
+      ],
+      "effective_bpm": 50.0,
+      "hand_review": "Variation A: Left hand stack 12 semitones. Right hand stack 8 semitones. Largest leap 8 semitones. Silent ticks 20640. Variation B: Left hand stack 12 semitones. Right hand stack 7 semitones. Largest leap 12 semitones. Silent ticks 24480.",
+      "hand_span": {
+        "a": {
+          "lh_span": 12,
+          "lh_used": true,
+          "max_leap": 8,
+          "rest_ticks": 20640,
+          "rh_span": 8,
+          "rh_used": true,
+          "summary": "Left hand stack 12 semitones. Right hand stack 8 semitones. Largest leap 8 semitones. Silent ticks 20640."
+        },
+        "b": {
+          "lh_span": 12,
+          "lh_used": true,
+          "max_leap": 12,
+          "rest_ticks": 24480,
+          "rh_span": 7,
+          "rh_used": true,
+          "summary": "Left hand stack 12 semitones. Right hand stack 7 semitones. Largest leap 12 semitones. Silent ticks 24480."
+        }
+      },
+      "hand_split": 60,
+      "harmonic_rhythm": "Gm, rest, Cm, rest, Gm, Eb, rest, Gm. Variation B ends on a G chord with F#.",
+      "id": "s06",
+      "identity": "Variation A leaves a bar empty between the long chords. Variation B enters off the downbeat. Its last chord adds F#4, and that note alone is flagged.",
+      "layering": "The inner voice moves F, Eb, D or Bb, G, F. It is not in the piano file.",
+      "limitations": "Do not treat the flagged F# as part of G natural minor. The other notes in that chord remain in the set.",
+      "meter": "4/4",
+      "phrases": [
+        {
+          "bars": 2,
+          "name": "Gm",
+          "start_bar": 0
+        },
+        {
+          "bars": 2,
+          "name": "Cm",
+          "start_bar": 2
+        },
+        {
+          "bars": 2,
+          "name": "Eb",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "Return",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        7,
+        9,
+        10,
+        0,
+        2,
+        3,
+        5
+      ],
+      "planned_seconds": 38.4,
+      "seed": 5006,
+      "slug": "s06-plagal-space",
+      "spell": [
+        "C",
+        "Db",
+        "D",
+        "Eb",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "Ab",
+        "A",
+        "Bb",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 1200000,
+      "title": "Plagal Space",
+      "tonal_reference": "G",
+      "tonic": "G",
+      "voicing": "Open fifths with a right-hand third or seventh. No hand stack is wider than an octave."
+    },
+    {
+      "accent": "The late F is louder than the opening Bb even though it is shorter.",
+      "bar_ticks": 3840,
+      "bars": 4,
+      "bpm": 80,
+      "change_bars": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "changes": [
+        "Bb",
+        "Gm",
+        "Eb",
+        "F"
+      ],
+      "collection_name": "Bb major",
+      "departures": [],
+      "effective_bpm": 80.0,
+      "hand_review": "Variation A: Left hand stack 12 semitones. Right hand stack 12 semitones. Largest leap 10 semitones. Silent ticks 12720. Variation B: Left hand plays single notes. Right hand stack 7 semitones. Largest leap 7 semitones. Silent ticks 10080.",
+      "hand_span": {
+        "a": {
+          "lh_span": 12,
+          "lh_used": true,
+          "max_leap": 10,
+          "rest_ticks": 12720,
+          "rh_span": 12,
+          "rh_used": true,
+          "summary": "Left hand stack 12 semitones. Right hand stack 12 semitones. Largest leap 10 semitones. Silent ticks 12720."
+        },
+        "b": {
+          "lh_span": 0,
+          "lh_used": true,
+          "max_leap": 7,
+          "rest_ticks": 10080,
+          "rh_span": 7,
+          "rh_used": true,
+          "summary": "Left hand plays single notes. Right hand stack 7 semitones. Largest leap 7 semitones. Silent ticks 10080."
+        }
+      },
+      "hand_split": 60,
+      "harmonic_rhythm": "Bb, Gm, Eb, and a short F on beat 4.",
+      "id": "s07",
+      "identity": "Variation A gives each chord a short attack and leaves the rest of the bar silent. The last chord arrives on beat 4 and does not resolve. Variation B rests the second bar and ends on a single A.",
+      "layering": "Inner voice answers in the gaps. It is not a resolution.",
+      "limitations": "The question is the unresolved F, or the single A in variation B. Neither file adds a Bb cadence.",
+      "meter": "4/4",
+      "phrases": [
+        {
+          "bars": 1,
+          "name": "Bb",
+          "start_bar": 0
+        },
+        {
+          "bars": 1,
+          "name": "Gm",
+          "start_bar": 1
+        },
+        {
+          "bars": 1,
+          "name": "Eb",
+          "start_bar": 2
+        },
+        {
+          "bars": 1,
+          "name": "Question",
+          "start_bar": 3
+        }
+      ],
+      "pitch_classes": [
+        10,
+        0,
+        2,
+        3,
+        5,
+        7,
+        9
+      ],
+      "planned_seconds": 12.0,
+      "seed": 8007,
+      "slug": "s07-late-question",
+      "spell": [
+        "C",
+        "Db",
+        "D",
+        "Eb",
+        "E",
+        "F",
+        "Gb",
+        "G",
+        "Ab",
+        "A",
+        "Bb",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 750000,
+      "title": "Late Question",
+      "tonal_reference": "Bb",
+      "tonic": "Bb",
+      "voicing": "Bb, Gm, and Eb are five, five, and four notes. The question is four notes, or one note in variation B."
+    },
+    {
+      "accent": "The A after the dominant is louder than the D that begins the cadence.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 58,
+      "change_bars": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "changes": [
+        "rest",
+        "D",
+        "rest",
+        "E",
+        "A",
+        "A"
+      ],
+      "collection_name": "A major",
+      "departures": [],
+      "effective_bpm": 57.999986466669824,
+      "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 12 semitones. Largest leap 7 semitones. Silent ticks 21600. Variation B: Left hand stack 8 semitones. Right hand stack 5 semitones. Largest leap 10 semitones. Silent ticks 24480.",
+      "hand_span": {
+        "a": {
+          "lh_span": 7,
+          "lh_used": true,
+          "max_leap": 7,
+          "rest_ticks": 21600,
+          "rh_span": 12,
+          "rh_used": true,
+          "summary": "Left hand stack 7 semitones. Right hand stack 12 semitones. Largest leap 7 semitones. Silent ticks 21600."
+        },
+        "b": {
+          "lh_span": 8,
+          "lh_used": true,
+          "max_leap": 10,
+          "rest_ticks": 24480,
+          "rh_span": 5,
+          "rh_used": true,
+          "summary": "Left hand stack 8 semitones. Right hand stack 5 semitones. Largest leap 10 semitones. Silent ticks 24480."
+        }
+      },
+      "hand_split": 60,
+      "harmonic_rhythm": "Three bars of rest, D, a bar of rest, E, A, A. Variation B states A, E, D first.",
+      "id": "s08",
+      "identity": "Variation A is silent for three bars, then moves D, E, A. Variation B states A, E, and D at the start and leaves the next four bars empty except one quiet A at the end.",
+      "layering": "Inner voice A sings through the opening rest. It is still a separate reference.",
+      "limitations": "The opening silence is the phrase. It is not a missing file. C# and G# are inside A major and are not flagged.",
+      "meter": "4/4",
+      "phrases": [
+        {
+          "bars": 3,
+          "name": "Wait",
+          "start_bar": 0
+        },
+        {
+          "bars": 1,
+          "name": "D",
+          "start_bar": 3
+        },
+        {
+          "bars": 2,
+          "name": "E",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "A",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        9,
+        11,
+        1,
+        2,
+        4,
+        6,
+        8
+      ],
+      "planned_seconds": 33.103456,
+      "seed": 5808,
+      "slug": "s08-cadence-room",
+      "spell": [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 1034483,
+      "title": "Cadence Room",
+      "tonal_reference": "A",
+      "tonic": "A",
+      "voicing": "D, E, and A are written as fifth plus third, within an octave in each hand."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+preview, not a master
+{
+  "arrangement_path": "midi/arrangement.mid",
+  "arrangement_sha256": "687bec41f13402b1bb48dd4956f5dff9fed9eddb38212a848851716c6b352247",
+  "encode": "libmp3lame CBR 192 kbps, mono source",
+  "excerpt": {
+    "bars": "1-8, the full container",
+    "end_tick": 30720,
+    "sequencing": "piano and inner voice reference, variation A, for the full 8 bars",
+    "start_tick": 0,
+    "study": "s01",
+    "transposition": "none"
+  },
+  "intermediate_wav": "build/preview.wav",
+  "intermediate_wav_note": "The WAV is gitignored build storage. The delivered preview is the MP3.",
+  "intermediate_wav_sha256": "d303f12b22ab1d11068e02feaa3fc503c363f368b271351602818140adaf4387",
+  "label": "preview, not a master",
+  "length_rule": "seconds = bars * 4 * 60 / BPM before tempo rounding. Study 01 uses the full container.",
+  "listening": "No human listening audition was performed for this build.",
+  "mapping": {
+    "inner-voice": "quieter sine at the written pitch, held for the written duration, with the same short fade",
+    "piano": "sine plus a quiet triangle, held for the written duration, with a few milliseconds of fade at the note-off"
+  },
+  "mp3_encode_command": [
+    "ffmpeg",
+    "-y",
+    "-i",
+    "/home/runner/work/emotional-piano-progressions/emotional-piano-progressions/build/preview.wav",
+    "-codec:a",
+    "libmp3lame",
+    "-b:a",
+    "192k",
+    "/home/runner/work/emotional-piano-progressions/emotional-piano-progressions/preview/preview.mp3"
+  ],
+  "mp3_path": "preview/preview.mp3",
+  "mp3_sha256": "20ace82bb6bc72be069af021bb4fb8545ba070e725fc548ce8d27d8be55be296",
+  "nominal_seconds": 26.666666666666668,
+  "pack_id": "emotional-piano-progressions",
+  "program_changes": "No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary.",
+  "renderer": "simple-synth-1.0.0",
+  "renderer_note": "These voices are preview mappings. They are not encoded in the MIDI file. The fade is click prevention at the written release. It is not a sustain pedal.",
+  "rounding": "sample = floor(seconds * sample_rate + 0.5), computed from tick 0; intervals are not summed",
+  "sample_peak": 16485,
+  "sample_peak_dbfs": -5.967219669610922,
+  "sample_peak_note": "This is a sample peak of the integer mix after scaling. It is not a loudness measurement and it is not a true-peak measurement.",
+  "score_seconds": 26.666656,
+  "score_sha256": "8c87ff475ad989b5da2c2ed93865fae28ce232bd75179b6a682d2272e25b701f",
+  "seconds_encoded": 26.666667,
+  "source_parts": [
+    {
+      "id": "s01.piano.a",
+      "path": "midi/s01-open-thirds/piano-a.mid",
+      "sha256": "a8471e1acdf80387f927c136ee7566fc99babf4a39b7cb86b3268328c55329d2"
+    },
+    {
+      "id": "s01.inner.a",
+      "path": "midi/s01-open-thirds/inner-a.mid",
+      "sha256": "7547ed54e7d4e371413c09d980135f5e1210754deb8949a3044c91bce6553142"
+    }
+  ],
+  "tempo_authority": "encoded MIDI tempo",
+  "tempo_us": 833333
+}
