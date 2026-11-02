@@ -11,48 +11,55 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
     steps:
       - uses: actions/checkout@v4
       - name: Unpack generator
         run: |
-          curl -fsSL -o source.tar.gz "https://h.uguu.se/jFaystck.tar.gz"
-          echo "ee423ab446293e98ec5c2a70713084674e4c1e23360d874c1b72514ce593702a  source.tar.gz" | sha256sum -c -
+          curl -fsSL -o source.tar.gz "https://n.uguu.se/WbLxoXwa.tar.gz"
+          echo "667ecb7662417b3c5062db5e3c5ab5c0ccb0b6620740fb045faa91cd9671c404  source.tar.gz" | sha256sum -c -
           tar -xzf source.tar.gz
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           touch .nojekyll
       - name: Install media tools
         run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
-      - name: Build pack
-        run: python3 tools/build_pack.py
-      - name: Commit delivered files
+      - name: Refresh score without new media
+        run: python3 tools/refresh_score.py
+      - name: Commit corrected score
         run: |
+          set -e
           git config user.name "mizcausevic-dev"
           git config user.email "mizcausevic-dev@users.noreply.github.com"
-          git add -A
+          git checkout -B main
+          rm -f source.tar.gz pages-result.txt
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          git add tools midi catalog score index.html media.html articles social checks
           if git diff --cached --quiet; then
             echo "no file changes"
-          else
-            git commit -m "Materialize Emotional Piano Progressions [skip ci]"
-            git push
-          fi
-      - name: Enable Pages from gh-pages
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          code=$(curl -sS -o /tmp/pages.json -w "%{http_code}" -X POST \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"}}')
-          echo "pages create $code"
-          if [ "$code" != "201" ] && [ "$code" != "409" ]; then
-            {
-              echo "pages create $code"
-              cat /tmp/pages.json
-            } > pages-result.txt
-            git add pages-result.txt
-            git commit -m "Record Pages API result [skip ci]"
-            git push
             exit 1
           fi
+          git commit -m "Correct Open Thirds variation B and Falling Alto wording [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          score_commit=$(git rev-parse HEAD)
+          git fetch origin gh-pages
+          git checkout -B gh-pages origin/gh-pages
+          git checkout "$score_commit" -- \
+            tools/compose.py \
+            tools/article.py \
+            tools/build_pack.py \
+            tools/refresh_score.py \
+            midi/s01-open-thirds/piano-b.mid \
+            catalog/catalog-Cursor.json \
+            score/canonical-score-Cursor.json \
+            score/identity-Cursor.md \
+            midi/validation-Cursor.json \
+            index.html \
+            media.html \
+            articles/medium-draft-Cursor.md \
+            articles/medium-paste-Cursor.txt \
+            social/instagram-Cursor/captions-Cursor.md \
+            social/x-Cursor/post-Cursor.txt \
+            checks/artifact-checklist-Cursor.json
+          git commit -m "Correct Open Thirds variation B and Falling Alto wording [skip ci]"
+          git pull --rebase origin gh-pages
+          git push origin HEAD:gh-pages
