@@ -12,7 +12,7 @@ Emotional quality is a compositional aim. It is not an automated validation resu
 
 Variation A holds Am, F, C, Dm, and Am, with a full empty bar after each of the first three chords. Variation B starts on beat 4, fills bars that A leaves empty, and shortens the last chord.
 
-Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 20160. Variation B: Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 9 semitones. Silent ticks 22320.
+Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 20160. Variation B: Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 12 semitones. Silent ticks 20880.
 
 Limitations: Use piano A with inner A, or piano B with inner B. The inner voice is optional. The piano chords are complete without it. No pedal is encoded.
 

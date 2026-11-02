@@ -64,7 +64,7 @@
       "core": true,
       "id": "s01.piano.b",
       "monophonic": false,
-      "notes": 23,
+      "notes": 26,
       "path": "midi/s01-open-thirds/piano-b.mid",
       "role": "piano",
       "study_id": "s01",
@@ -502,7 +502,7 @@
       "collection_name": "A natural minor",
       "departures": [],
       "effective_bpm": 72.00002880001152,
-      "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 20160. Variation B: Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 9 semitones. Silent ticks 22320.",
+      "hand_review": "Variation A: Left hand stack 7 semitones. Right hand stack 9 semitones. Largest leap 7 semitones. Silent ticks 20160. Variation B: Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 12 semitones. Silent ticks 20880.",
       "hand_span": {
         "a": {
           "lh_span": 7,
@@ -516,15 +516,15 @@
         "b": {
           "lh_span": 7,
           "lh_used": true,
-          "max_leap": 9,
-          "rest_ticks": 22320,
+          "max_leap": 12,
+          "rest_ticks": 20880,
           "rh_span": 8,
           "rh_used": true,
-          "summary": "Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 9 semitones. Silent ticks 22320."
+          "summary": "Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 12 semitones. Silent ticks 20880."
         }
       },
       "hand_split": 60,
-      "harmonic_rhythm": "Two bars each of Am and F and C, then one bar of Dm and one bar of Am. The even bars between the first three chords are empty.",
+      "harmonic_rhythm": "Two bars each of Am, F, and C, then one bar of Dm and one bar of Am. Variation A leaves bars 2, 4, and 6 empty. Variation B fills those bars with Am, F, and C.",
       "id": "s01",
       "identity": "Variation A holds Am, F, C, Dm, and Am, with a full empty bar after each of the first three chords. Variation B starts on beat 4, fills bars that A leaves empty, and shortens the last chord.",
       "layering": "Both hands share the piano file. The inner voice is a separate reference file and is not copied into the piano.",
@@ -593,7 +593,8 @@
       "change_bars": [
         1,
         1,
-        2,
+        1,
+        1,
         1,
         1,
         1,
@@ -603,6 +604,7 @@
         "Dm",
         "rest",
         "G",
+        "F4",
         "A",
         "rest",
         "C",
@@ -633,7 +635,7 @@
         }
       },
       "hand_split": 60,
-      "harmonic_rhythm": "Dm, a rest, G for two bars, A, a rest, C, Dm.",
+      "harmonic_rhythm": "Dm, a rest, one bar of G, then F4 on beat 4 of the next bar, A, a rest, C, Dm.",
       "id": "s02",
       "identity": "Variation A drops D5, C5, A4, then rests a bar before the chords. Variation B drops that line and places block chords on different beats.",
       "layering": "Left-hand notes stay below C4. The inner voice is not merged into those notes.",
@@ -647,7 +649,7 @@
         },
         {
           "bars": 2,
-          "name": "G",
+          "name": "G then F",
           "start_bar": 2
         },
         {

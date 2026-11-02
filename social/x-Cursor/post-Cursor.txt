@@ -2,4 +2,4 @@ DRAFT
 This label is not the post body.
 
 POST BODY
-Emotional Piano Progressions: 8 piano studies, economical voicings, harmonic motion, and rests. Two variations each. Note-only MIDI, 50-90 BPM. Inner voice is separate. Study 01 preview is simple-synth, not a master. No listening audition was performed.
+Emotional Piano Progressions: Open Thirds, 8 bars at 72 BPM. Preview 26.697 seconds. preview, not a master. No human listening audition was performed for this build.

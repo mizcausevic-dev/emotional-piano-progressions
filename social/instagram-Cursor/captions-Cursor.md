@@ -3,7 +3,7 @@ This file is a draft. It has not been posted.
 
 Caption
 
-Emotional Piano Progressions. Eight studies of economical piano voicing, harmonic motion, and rests. Two piano variations each, note-only MIDI between 50 and 90 BPM. The inner voice is a separate reference. The audio preview is a simple-synth render of study 01, not a master. No listening audition was performed for this build.
+Emotional Piano Progressions. Open Thirds is 8 bars at 72 BPM. The audio preview is 26.697 seconds. preview, not a master. No human listening audition was performed for this build.
 
 Hashtags
 
