@@ -6,7 +6,7 @@ DRAFT. The GitHub repository is https://github.com/mizcausevic-dev/emotional-pia
 
 Tags: midi, piano, composition, music-production, harmony
 
-The pack is eight piano studies in 4/4. Tempos are integers from 50 to 90 BPM. Container lengths were chosen before the notes: six studies are 8 bars and two are 4 bars. Study 01, Open Thirds, is 8 bars at 72 BPM. That full container is the music preview, about 26.7 seconds. Sixteen piano files are the core, two variations for each study. Sixteen inner-voice files are reference only. They are not in the core count and they are not merged into the piano files.
+The pack is eight piano studies in 4/4. Tempos are integers from 50 to 90 BPM. Container lengths were chosen before the notes: six studies are 8 bars and two are 4 bars. Study 01, Open Thirds, is 8 bars at 72 BPM. That full container is the music preview, 26.697 seconds. Sixteen piano files are the core, two variations for each study. Sixteen inner-voice files are reference only. They are not in the core count and they are not merged into the piano files.
 
 Open Thirds holds Am, F, C, Dm, and Am, with an empty bar after each of the first three chords. Falling Alto drops D, C, A and then answers with chords. Low Fifths is a left-hand fifth plus one right-hand note. Two-Note Call speaks in pairs and leaves a bar empty. Suspended Room resolves a suspension in the same bar, then rests. Plagal Space leaves a bar empty between Gm, Cm, and Eb. Late Question puts its last chord on beat 4. Cadence Room is silent for three bars, then moves D, E, A. Variation B of each study changes the attack, the pitch, or the duration. A velocity edit alone does not count.
 

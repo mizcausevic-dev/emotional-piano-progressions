@@ -263,11 +263,12 @@ def _s01(study):
     ])
     lay(piano_b, [
         (0, 2880, 720, (57, 60, 64), 70),
-        (1, 0, 1440, (52, 60, 67), 72),
+        (1, 0, 1440, (45, 52, 60), 72),
         (1, 2400, 480, (64,), 68),
         (2, 1920, 960, (53, 60, 65), 74),
-        (3, 960, 1920, (55, 62, 67), 76),
+        (3, 960, 1920, (53, 60, 65), 76),
         (4, 480, 480, (48, 64, 72), 80),
+        (5, 960, 1440, (48, 64, 67), 78),
         (6, 0, 960, (50, 57, 65), 74),
         (6, 1920, 480, (69,), 70),
         (7, 1440, 960, (45, 64, 69), 86),
@@ -522,7 +523,7 @@ def studies():
          "tonic": "A", "tonal_reference": "A", "collection_name": "A natural minor",
          "pitch_classes": [9, 11, 0, 2, 4, 5, 7], "departures": [], "seed": 7201,
          "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"],
-         "harmonic_rhythm": "Two bars each of Am and F and C, then one bar of Dm and one bar of Am. The even bars between the first three chords are empty.",
+         "harmonic_rhythm": "Two bars each of Am, F, and C, then one bar of Dm and one bar of Am. Variation A leaves bars 2, 4, and 6 empty. Variation B fills those bars with Am, F, and C.",
          "changes": ["Am", "F", "C", "Dm", "Am"], "change_bars": [2, 2, 2, 1, 1],
          "phrases": [
              {"name": "Open", "start_bar": 0, "bars": 2},
@@ -539,11 +540,11 @@ def studies():
          "tonic": "D", "tonal_reference": "D", "collection_name": "D Dorian",
          "pitch_classes": [2, 4, 5, 7, 9, 11, 0], "departures": [], "seed": 6002,
          "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"],
-         "harmonic_rhythm": "Dm, a rest, G for two bars, A, a rest, C, Dm.",
-         "changes": ["Dm", "rest", "G", "A", "rest", "C", "Dm"], "change_bars": [1, 1, 2, 1, 1, 1, 1],
+         "harmonic_rhythm": "Dm, a rest, one bar of G, then F4 on beat 4 of the next bar, A, a rest, C, Dm.",
+         "changes": ["Dm", "rest", "G", "F4", "A", "rest", "C", "Dm"], "change_bars": [1, 1, 1, 1, 1, 1, 1, 1],
          "phrases": [
              {"name": "Fall", "start_bar": 0, "bars": 2},
-             {"name": "G", "start_bar": 2, "bars": 2},
+             {"name": "G then F", "start_bar": 2, "bars": 2},
              {"name": "A", "start_bar": 4, "bars": 2},
              {"name": "Close", "start_bar": 6, "bars": 2},
          ],

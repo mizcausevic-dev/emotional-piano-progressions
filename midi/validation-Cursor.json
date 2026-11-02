@@ -9,7 +9,7 @@
     "tracks": 3
   },
   "catalog_path": "catalog/catalog-Cursor.json",
-  "catalog_sha256": "cf2c7308e6825a0c6c0684be38515b4d015d199b41637d12cf853e2de9bcb586",
+  "catalog_sha256": "649654fbf8312d6dcc9da6cc623486e853093ebd7f4a5b780650375c0e3b7547",
   "errors": [],
   "files": [
     {
@@ -43,14 +43,14 @@
       "tracks": 1
     },
     {
-      "bytes": 253,
+      "bytes": 279,
       "channels": [
         0
       ],
       "checks": {
         "eot": 30720,
         "meter": "4/4",
-        "notes": 23,
+        "notes": 26,
         "overlap": "PASS",
         "parse": "PASS",
         "ppq": 960,
@@ -62,13 +62,13 @@
       "format": 0,
       "max_polyphony": 3,
       "meter": "4/4",
-      "notes": 23,
+      "notes": 26,
       "path": "midi/s01-open-thirds/piano-b.mid",
       "ppq": 960,
       "requested_bpm": 72,
       "role": "piano",
       "score_agreement": "PASS",
-      "sha256": "5ba4fa581bd65c160cd8b9505de18a35b08d3a3cf31596fc0690447cd2891777",
+      "sha256": "84e05d603e784e45a350d85c116c732b7dc5d13cb1d2ea1869d2c3aac0998630",
       "tempo_us": 833333,
       "tracks": 1
     },
@@ -990,11 +990,11 @@
       "s01.piano.b": {
         "lh_span": 7,
         "lh_used": true,
-        "max_leap": 9,
-        "rest_ticks": 22320,
+        "max_leap": 12,
+        "rest_ticks": 20880,
         "rh_span": 8,
         "rh_used": true,
-        "summary": "Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 9 semitones. Silent ticks 22320."
+        "summary": "Left hand stack 7 semitones. Right hand stack 8 semitones. Largest leap 12 semitones. Silent ticks 20880."
       },
       "s02.piano.a": {
         "lh_span": 7,
@@ -1164,6 +1164,6 @@
     "arrangement musical tracks match the individual files and carry no tempo"
   ],
   "score_path": "score/canonical-score-Cursor.json",
-  "score_sha256": "8c87ff475ad989b5da2c2ed93865fae28ce232bd75179b6a682d2272e25b701f",
+  "score_sha256": "53916ac8f588b6fd11110f3487201c6ae8943985f672fa9291ddfb5977d64613",
   "validator_version": "1.0.0"
 }

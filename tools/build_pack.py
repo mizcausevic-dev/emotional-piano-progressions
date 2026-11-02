@@ -38,9 +38,9 @@ from tools.statements import (  # noqa: E402
 from tools.validate import dump_json, validate_tree, write_midi_files  # noqa: E402
 
 X_BODY = (
-    "Emotional Piano Progressions: 8 piano studies, economical voicings, harmonic motion, and rests. "
-    "Two variations each. Note-only MIDI, 50-90 BPM. Inner voice is separate. "
-    "Study 01 preview is simple-synth, not a master. No listening audition was performed."
+    "Emotional Piano Progressions: Open Thirds, 8 bars at 72 BPM. "
+    "Preview 26.697 seconds. preview, not a master. "
+    "No human listening audition was performed for this build."
 )
 
 
@@ -197,7 +197,7 @@ This file is a draft. It has not been posted.
 
 Caption
 
-Emotional Piano Progressions. Eight studies of economical piano voicing, harmonic motion, and rests. Two piano variations each, note-only MIDI between 50 and 90 BPM. The inner voice is a separate reference. The audio preview is a simple-synth render of study 01, not a master. No listening audition was performed for this build.
+Emotional Piano Progressions. Open Thirds is 8 bars at 72 BPM. The audio preview is 26.697 seconds. preview, not a master. No human listening audition was performed for this build.
 
 Hashtags
 

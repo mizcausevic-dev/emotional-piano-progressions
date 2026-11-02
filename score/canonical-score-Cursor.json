@@ -34,7 +34,7 @@
       {
         "a": 25,
         "a_attacks": 5,
-        "b": 23,
+        "b": 26,
         "study_id": "s01"
       },
       {
@@ -429,7 +429,7 @@
           "nominal_start": 3840,
           "offset": 0,
           "performed_start": 3840,
-          "pitch": 52,
+          "pitch": 45,
           "velocity": 72
         },
         {
@@ -440,7 +440,7 @@
           "nominal_start": 3840,
           "offset": 0,
           "performed_start": 3840,
-          "pitch": 60,
+          "pitch": 52,
           "velocity": 72
         },
         {
@@ -451,7 +451,7 @@
           "nominal_start": 3840,
           "offset": 0,
           "performed_start": 3840,
-          "pitch": 67,
+          "pitch": 60,
           "velocity": 72
         },
         {
@@ -506,7 +506,7 @@
           "nominal_start": 12480,
           "offset": 0,
           "performed_start": 12480,
-          "pitch": 55,
+          "pitch": 53,
           "velocity": 76
         },
         {
@@ -517,7 +517,7 @@
           "nominal_start": 12480,
           "offset": 0,
           "performed_start": 12480,
-          "pitch": 62,
+          "pitch": 60,
           "velocity": 76
         },
         {
@@ -528,7 +528,7 @@
           "nominal_start": 12480,
           "offset": 0,
           "performed_start": 12480,
-          "pitch": 67,
+          "pitch": 65,
           "velocity": 76
         },
         {
@@ -567,8 +567,41 @@
         {
           "channel": 0,
           "departure": false,
-          "duration": 960,
+          "duration": 1440,
           "id": "s01.piano.b.n0017",
+          "nominal_start": 20160,
+          "offset": 0,
+          "performed_start": 20160,
+          "pitch": 48,
+          "velocity": 78
+        },
+        {
+          "channel": 0,
+          "departure": false,
+          "duration": 1440,
+          "id": "s01.piano.b.n0018",
+          "nominal_start": 20160,
+          "offset": 0,
+          "performed_start": 20160,
+          "pitch": 64,
+          "velocity": 78
+        },
+        {
+          "channel": 0,
+          "departure": false,
+          "duration": 1440,
+          "id": "s01.piano.b.n0019",
+          "nominal_start": 20160,
+          "offset": 0,
+          "performed_start": 20160,
+          "pitch": 67,
+          "velocity": 78
+        },
+        {
+          "channel": 0,
+          "departure": false,
+          "duration": 960,
+          "id": "s01.piano.b.n0020",
           "nominal_start": 23040,
           "offset": 0,
           "performed_start": 23040,
@@ -579,7 +612,7 @@
           "channel": 0,
           "departure": false,
           "duration": 960,
-          "id": "s01.piano.b.n0018",
+          "id": "s01.piano.b.n0021",
           "nominal_start": 23040,
           "offset": 0,
           "performed_start": 23040,
@@ -590,7 +623,7 @@
           "channel": 0,
           "departure": false,
           "duration": 960,
-          "id": "s01.piano.b.n0019",
+          "id": "s01.piano.b.n0022",
           "nominal_start": 23040,
           "offset": 0,
           "performed_start": 23040,
@@ -601,7 +634,7 @@
           "channel": 0,
           "departure": false,
           "duration": 480,
-          "id": "s01.piano.b.n0020",
+          "id": "s01.piano.b.n0023",
           "nominal_start": 24960,
           "offset": 0,
           "performed_start": 24960,
@@ -612,7 +645,7 @@
           "channel": 0,
           "departure": false,
           "duration": 960,
-          "id": "s01.piano.b.n0021",
+          "id": "s01.piano.b.n0024",
           "nominal_start": 28320,
           "offset": 0,
           "performed_start": 28320,
@@ -623,7 +656,7 @@
           "channel": 0,
           "departure": false,
           "duration": 960,
-          "id": "s01.piano.b.n0022",
+          "id": "s01.piano.b.n0025",
           "nominal_start": 28320,
           "offset": 0,
           "performed_start": 28320,
@@ -634,7 +667,7 @@
           "channel": 0,
           "departure": false,
           "duration": 960,
-          "id": "s01.piano.b.n0023",
+          "id": "s01.piano.b.n0026",
           "nominal_start": 28320,
           "offset": 0,
           "performed_start": 28320,
