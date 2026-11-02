@@ -64,7 +64,7 @@
       "core": true,
       "id": "s01.piano.b",
       "monophonic": false,
-      "notes": 26,
+      "notes": 27,
       "path": "midi/s01-open-thirds/piano-b.mid",
       "role": "piano",
       "study_id": "s01",
