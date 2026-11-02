@@ -3,96 +3,74 @@ name: materialize
 on:
   push:
     branches: [main]
-
-permissions:
-  contents: write
+  workflow_dispatch:
 
 jobs:
-  duration-text:
-    if: ${{ contains(github.event.head_commit.message, 'duration-text-once') }}
+  build:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: State the catalog preview as 26.697 seconds
+      - name: Unpack generator
+        run: |
+          curl -fsSL -o source.tar.gz "https://h.uguu.se/VQnEUdCE.tar.gz"
+          echo "655e22df64e424eb6a8d5b505fafda0b1eef92e05b00f432ca4f6390734ab219  source.tar.gz" | sha256sum -c -
+          tar -xzf source.tar.gz
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          touch .nojekyll
+      - name: Install media tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Refresh score without new media
+        run: python3 tools/refresh_score.py
+      - name: Commit corrected score
         run: |
           set +e
-          {
-            set -euo pipefail
-            git rev-parse HEAD
-            git rev-parse HEAD~1 || true
-            cat > /tmp/fix_index.py << 'PY'
-          from pathlib import Path
-          path = Path("index.html")
-          text = path.read_text()
-          if "26.67" not in text and "26.697" in text:
-              raise SystemExit(0)
-          if text.count("26.67") != 3:
-              raise SystemExit("26.67 count %s" % text.count("26.67"))
-          text = text.replace("26.67", "26.697")
-          if "26.67" in text:
-              raise SystemExit("26.67 remains")
-          if "Variation B fills those bars with Am, F, and C." not in text:
-              raise SystemExit("open thirds variation B sentence missing")
-          if "Dm, a rest, one bar of G, then F4 on beat 4 of the next bar, A, a rest, C, Dm." not in text:
-              raise SystemExit("falling alto sentence missing")
-          if "It is 26.697 seconds. preview, not a master." not in text:
-              raise SystemExit("catalog sentence missing")
-          if "\u2014" in text:
-              raise SystemExit("emdash")
-          path.write_text(text)
-          PY
-            python3 /tmp/fix_index.py
-            git config user.name "mizcausevic-dev"
-            git config user.email "mizcausevic-dev@users.noreply.github.com"
-            git add index.html
-            git commit -m "State the catalog preview as 26.697 seconds [skip ci]"
-            git push origin HEAD:main
-            git fetch origin gh-pages
-            git checkout --detach origin/gh-pages
-            python3 /tmp/fix_index.py
-            git add index.html
-            if git diff --cached --quiet; then
-              echo "gh-pages index already correct"
-            else
-              git commit -m "State the catalog preview as 26.697 seconds [skip ci]"
-              git push origin HEAD:gh-pages
-            fi
-          } > /tmp/step.txt 2>&1
+          bash -x <<'EOS' > /tmp/git-step.txt 2>&1
+          set -e
+          git config user.name "mizcausevic-dev"
+          git config user.email "mizcausevic-dev@users.noreply.github.com"
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          git checkout -- source.tar.gz
+          git add tools midi catalog score index.html media.html articles social checks
+          git status --short
+          git commit -m "Add A3 so Open Thirds variation B bar 4 is an F major triad [skip ci]"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+          score_commit=$(git rev-parse HEAD)
+          git fetch origin gh-pages
+          git checkout --detach origin/gh-pages
+          git checkout "$score_commit" -- \
+            tools/compose.py \
+            tools/article.py \
+            tools/build_pack.py \
+            tools/refresh_score.py \
+            midi/s01-open-thirds/piano-b.mid \
+            catalog/catalog-Cursor.json \
+            score/canonical-score-Cursor.json \
+            score/identity-Cursor.md \
+            midi/validation-Cursor.json \
+            index.html \
+            media.html \
+            articles/medium-draft-Cursor.md \
+            articles/medium-paste-Cursor.txt \
+            social/instagram-Cursor/captions-Cursor.md \
+            social/x-Cursor/post-Cursor.txt \
+            checks/artifact-checklist-Cursor.json
+          git status --short
+          git commit -m "Add A3 so Open Thirds variation B bar 4 is an F major triad [skip ci]"
+          git fetch origin gh-pages
+          git rebase origin/gh-pages
+          git push origin HEAD:gh-pages
+          EOS
           code=$?
+          url=$(curl -fsSL -F "files[]=@/tmp/git-step.txt" "https://uguu.se/upload?output=text" || true)
+          echo "log $url"
           if [ "$code" != "0" ]; then
-            python3 - << 'PY'
-          import base64, json, os, urllib.request
-          from pathlib import Path
-          log = Path("/tmp/step.txt").read_bytes()[-50000:]
-          body = json.dumps({
-              "message": "Record the duration step log [skip ci]",
-              "content": base64.b64encode(log).decode(),
-              "branch": "main",
-          }).encode()
-          req = urllib.request.Request(
-              "https://api.github.com/repos/%s/contents/checks/duration-step-log.txt" % os.environ["GITHUB_REPOSITORY"],
-              data=body,
-              method="PUT",
-              headers={
-                  "Authorization": "Bearer %s" % os.environ["GITHUB_TOKEN"],
-                  "Accept": "application/vnd.github+json",
-                  "Content-Type": "application/json",
-                  "User-Agent": "duration-text",
-              },
-          )
-          try:
-              with urllib.request.urlopen(req) as resp:
-                  print(resp.status)
-                  print(resp.read().decode()[:300])
-          except Exception as exc:
-              print("log upload failed", exc)
-              if hasattr(exc, "read"):
-                  print(exc.read().decode()[:1000])
-          PY
+            echo "::error::$url"
           fi
-          cat /tmp/step.txt
           exit "$code"
