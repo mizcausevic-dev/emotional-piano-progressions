@@ -36,7 +36,6 @@ jobs:
             git commit -m "Materialize Emotional Piano Progressions [skip ci]"
             git push
           fi
-          git push origin HEAD:gh-pages
       - name: Enable Pages from gh-pages
         env:
           GH_TOKEN: ${{ github.token }}
@@ -47,7 +46,13 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/pages" \
             -d '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"}}')
           echo "pages create $code"
-          cat /tmp/pages.json
           if [ "$code" != "201" ] && [ "$code" != "409" ]; then
+            {
+              echo "pages create $code"
+              cat /tmp/pages.json
+            } > pages-result.txt
+            git add pages-result.txt
+            git commit -m "Record Pages API result [skip ci]"
+            git push
             exit 1
           fi
