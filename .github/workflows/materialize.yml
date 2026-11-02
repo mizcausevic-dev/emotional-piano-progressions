@@ -17,8 +17,8 @@ jobs:
           fetch-depth: 0
       - name: Unpack generator
         run: |
-          curl -fsSL -o source.tar.gz "https://n.uguu.se/WbLxoXwa.tar.gz"
-          echo "667ecb7662417b3c5062db5e3c5ab5c0ccb0b6620740fb045faa91cd9671c404  source.tar.gz" | sha256sum -c -
+          curl -fsSL -o source.tar.gz "https://h.uguu.se/VQnEUdCE.tar.gz"
+          echo "655e22df64e424eb6a8d5b505fafda0b1eef92e05b00f432ca4f6390734ab219  source.tar.gz" | sha256sum -c -
           tar -xzf source.tar.gz
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           touch .nojekyll
@@ -37,7 +37,7 @@ jobs:
           git checkout -- source.tar.gz
           git add tools midi catalog score index.html media.html articles social checks
           git status --short
-          git commit -m "Correct Open Thirds variation B and Falling Alto wording [skip ci]"
+          git commit -m "Add A3 so Open Thirds variation B bar 4 is an F major triad [skip ci]"
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
@@ -62,7 +62,7 @@ jobs:
             social/x-Cursor/post-Cursor.txt \
             checks/artifact-checklist-Cursor.json
           git status --short
-          git commit -m "Correct Open Thirds variation B and Falling Alto wording [skip ci]"
+          git commit -m "Add A3 so Open Thirds variation B bar 4 is an F major triad [skip ci]"
           git fetch origin gh-pages
           git rebase origin/gh-pages
           git push origin HEAD:gh-pages
@@ -70,5 +70,7 @@ jobs:
           code=$?
           url=$(curl -fsSL -F "files[]=@/tmp/git-step.txt" "https://uguu.se/upload?output=text" || true)
           echo "log $url"
-          echo "::error::$url"
+          if [ "$code" != "0" ]; then
+            echo "::error::$url"
+          fi
           exit "$code"
