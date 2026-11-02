@@ -1,6 +1,6 @@
 # Publication plan
 
-Status: target is public. This generator does not itself prove that the Pages URL responds.
+Status: gh-pages holds the materialized pack. The catalog URL is live only after GitHub Pages responds.
 
 The GitHub repository is https://github.com/mizcausevic-dev/emotional-piano-progressions and it is public. The catalog page is https://mizcausevic-dev.github.io/emotional-piano-progressions/ .
 
