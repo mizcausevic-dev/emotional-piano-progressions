@@ -3,74 +3,62 @@ name: materialize
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  build:
-    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+  duration-text:
+    if: ${{ contains(github.event.head_commit.message, 'duration-text-once') }}
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Unpack generator
+
+      - name: State the catalog preview as 26.697 seconds
         run: |
-          curl -fsSL -o source.tar.gz "https://h.uguu.se/VQnEUdCE.tar.gz"
-          echo "655e22df64e424eb6a8d5b505fafda0b1eef92e05b00f432ca4f6390734ab219  source.tar.gz" | sha256sum -c -
-          tar -xzf source.tar.gz
-          find . -type d -name __pycache__ -prune -exec rm -rf {} +
-          touch .nojekyll
-      - name: Install media tools
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
-      - name: Refresh score without new media
-        run: python3 tools/refresh_score.py
-      - name: Commit corrected score
-        run: |
-          set +e
-          bash -x <<'EOS' > /tmp/git-step.txt 2>&1
-          set -e
+          set -euo pipefail
+          cat > /tmp/fix_index.py << 'PY'
+          from pathlib import Path
+          path = Path("index.html")
+          text = path.read_text()
+          if "26.67" not in text and text.count("26.697") >= 3:
+              raise SystemExit(0)
+          if text.count("26.67") != 3:
+              raise SystemExit("26.67 count %s" % text.count("26.67"))
+          text = text.replace("26.67", "26.697")
+          if "26.67" in text or text.count("26.697") != 3:
+              raise SystemExit("replace failed")
+          if "Variation B fills those bars with Am, F, and C." not in text:
+              raise SystemExit("open thirds variation B sentence missing")
+          if "Dm, a rest, one bar of G, then F4 on beat 4 of the next bar, A, a rest, C, Dm." not in text:
+              raise SystemExit("falling alto sentence missing")
+          if "\u2014" in text:
+              raise SystemExit("emdash")
+          if "preview, not a master" not in text:
+              raise SystemExit("preview phrase missing")
+          sentence = "The MP3 is the piano and the inner voice reference together. It is 26.697 seconds. preview, not a master."
+          if sentence not in text:
+              raise SystemExit("catalog sentence missing")
+          path.write_text(text)
+          PY
+          python3 /tmp/fix_index.py
+          git checkout HEAD~1 -- .github/workflows/materialize.yml
+          if grep -q duration-text-once .github/workflows/materialize.yml; then
+            echo "workflow was not restored"
+            exit 1
+          fi
           git config user.name "mizcausevic-dev"
           git config user.email "mizcausevic-dev@users.noreply.github.com"
-          find . -type d -name __pycache__ -prune -exec rm -rf {} +
-          git checkout -- source.tar.gz
-          git add tools midi catalog score index.html media.html articles social checks
-          git status --short
-          git commit -m "Add A3 so Open Thirds variation B bar 4 is an F major triad [skip ci]"
-          git fetch origin main
-          git rebase origin/main
+          git add index.html .github/workflows/materialize.yml
+          git commit -m "State the catalog preview as 26.697 seconds [skip ci]"
           git push origin HEAD:main
-          score_commit=$(git rev-parse HEAD)
           git fetch origin gh-pages
           git checkout --detach origin/gh-pages
-          git checkout "$score_commit" -- \
-            tools/compose.py \
-            tools/article.py \
-            tools/build_pack.py \
-            tools/refresh_score.py \
-            midi/s01-open-thirds/piano-b.mid \
-            catalog/catalog-Cursor.json \
-            score/canonical-score-Cursor.json \
-            score/identity-Cursor.md \
-            midi/validation-Cursor.json \
-            index.html \
-            media.html \
-            articles/medium-draft-Cursor.md \
-            articles/medium-paste-Cursor.txt \
-            social/instagram-Cursor/captions-Cursor.md \
-            social/x-Cursor/post-Cursor.txt \
-            checks/artifact-checklist-Cursor.json
-          git status --short
-          git commit -m "Add A3 so Open Thirds variation B bar 4 is an F major triad [skip ci]"
-          git fetch origin gh-pages
-          git rebase origin/gh-pages
+          python3 /tmp/fix_index.py
+          git add index.html
+          git diff --cached --quiet && echo "gh-pages index already correct" && exit 0
+          git commit -m "State the catalog preview as 26.697 seconds [skip ci]"
           git push origin HEAD:gh-pages
-          EOS
-          code=$?
-          url=$(curl -fsSL -F "files[]=@/tmp/git-step.txt" "https://uguu.se/upload?output=text" || true)
-          echo "log $url"
-          if [ "$code" != "0" ]; then
-            echo "::error::$url"
-          fi
-          exit "$code"
