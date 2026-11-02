@@ -33,8 +33,8 @@ jobs:
           set -e
           git config user.name "mizcausevic-dev"
           git config user.email "mizcausevic-dev@users.noreply.github.com"
-          rm -f source.tar.gz pages-result.txt
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          git checkout -- source.tar.gz
           git add tools midi catalog score index.html media.html articles social checks
           git status --short
           git commit -m "Correct Open Thirds variation B and Falling Alto wording [skip ci]"
