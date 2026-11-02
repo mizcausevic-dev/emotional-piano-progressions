@@ -9,7 +9,7 @@
     "tracks": 3
   },
   "catalog_path": "catalog/catalog-Cursor.json",
-  "catalog_sha256": "649654fbf8312d6dcc9da6cc623486e853093ebd7f4a5b780650375c0e3b7547",
+  "catalog_sha256": "c29e5205a84ea93e4d748811ea4f00d23f11c52e8a80d012d81e697d59698bee",
   "errors": [],
   "files": [
     {
@@ -43,14 +43,14 @@
       "tracks": 1
     },
     {
-      "bytes": 279,
+      "bytes": 287,
       "channels": [
         0
       ],
       "checks": {
         "eot": 30720,
         "meter": "4/4",
-        "notes": 26,
+        "notes": 27,
         "overlap": "PASS",
         "parse": "PASS",
         "ppq": 960,
@@ -60,15 +60,15 @@
       "departures": 0,
       "effective_bpm": 72.00002880001152,
       "format": 0,
-      "max_polyphony": 3,
+      "max_polyphony": 4,
       "meter": "4/4",
-      "notes": 26,
+      "notes": 27,
       "path": "midi/s01-open-thirds/piano-b.mid",
       "ppq": 960,
       "requested_bpm": 72,
       "role": "piano",
       "score_agreement": "PASS",
-      "sha256": "84e05d603e784e45a350d85c116c732b7dc5d13cb1d2ea1869d2c3aac0998630",
+      "sha256": "1cab7c8fe9245d802f91084c0a536a5b1075534fab3c54b55c454c78df365baa",
       "tempo_us": 833333,
       "tracks": 1
     },
@@ -1164,6 +1164,6 @@
     "arrangement musical tracks match the individual files and carry no tempo"
   ],
   "score_path": "score/canonical-score-Cursor.json",
-  "score_sha256": "53916ac8f588b6fd11110f3487201c6ae8943985f672fa9291ddfb5977d64613",
+  "score_sha256": "91f6ed9cd213e8f1ddbbfd9f78f3f3cd0aca9a93649887b50bb8542d536a51e4",
   "validator_version": "1.0.0"
 }
